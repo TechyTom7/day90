@@ -53,6 +53,10 @@ input[type="text"]:hover, input[type="password"]:hover, input[type='submit']:hov
     border-color: rgb(255, 255, 255);
 }
 
+input[type='submit'] {
+    font-weight: 450;
+}
+
 .remember-me {
     position: relative;
     margin: 10px 20px 10px 10px;
@@ -148,6 +152,10 @@ a {
 
     .form-container h1 {
         font-weight: 300;
+    }
+
+    input[type='submit'] {
+        font-weight: 450;
     }
 }
 
