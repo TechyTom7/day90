@@ -26,6 +26,42 @@ export default function Home(props) {
             image.style.left = Math.floor(Math.random() * window.innerWidth) + "px";
             starsContainer.appendChild(image);
         }
+
+        // const starsContainer = document.getElementById("stars-container");
+        // const numStars = 12; // Number of stars
+        // const radius = 150; // Adjust for container's radius
+
+        // // Create and position stars
+        // for (let i = 0; i < numStars; ++i) {
+        //     const image = document.createElement("img");
+        //     image.src = "/images/eu-star.png";
+        //     image.className = "star";
+
+        //     // Append the image to the container first
+        //     starsContainer.appendChild(image);
+
+        //     // Calculate star position in a circle
+        //     const angle = (2 * Math.PI / numStars) * i; // Angle for each star
+        //     const centerX = starsContainer.clientWidth / 2;
+        //     const centerY = starsContainer.clientHeight / 2;
+
+        //     // Calculate image dimensions
+        //     const imageDimensions = image.getBoundingClientRect();
+        //     const imageWidth = imageDimensions.width;
+        //     const imageHeight = imageDimensions.height;
+
+        //     // Calculate the position within the container
+        //     const top = centerY + radius * Math.sin(angle) - (imageHeight / 2);
+        //     const left = centerX + radius * Math.cos(angle) - (imageWidth / 2);
+
+        //     // Ensure the star is positioned relative to the container
+        //     image.style.position = 'absolute';
+        //     image.style.top = `${top}px`;
+        //     image.style.left = `${left}px`;
+        // }
+
+
+
     }, [])
 
     return (

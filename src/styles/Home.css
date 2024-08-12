@@ -86,7 +86,8 @@ h2 {
 }
 
 .star {
-    position: absolute;
+    position: relative;
+    visibility: hidden;
     width: 20px;
     height: 20px;
     z-index: -5;
@@ -114,5 +115,9 @@ h2 {
 
     #set-account-section span {
         font-size: 1.3rem;
+    }
+
+    .star {
+        visibility: visible;
     }
 }
