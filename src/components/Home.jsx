@@ -19,7 +19,7 @@ export default function Home(props) {
         const starsContainer = document.getElementById("stars-container");
         for (let i = 0; i < 10; ++i) {
             const image = document.createElement("img");
-            image.src = "public/images/eu-star.png";
+            image.src = "/images/eu-star.png";
             image.className = "star";
 
             image.style.top = Math.floor(Math.random() * window.innerHeight) + "px";
