@@ -22,8 +22,8 @@ h1 {
 }
 
 h2 {
-    font-weight: 450;
-    opacity: 1;
+    font-weight: 400;
+    opacity: 0.9;
     font-size: 1.2rem;
     margin: 30px;
 }
@@ -95,7 +95,9 @@ h2 {
 
     h2 {
         font-size: 1.4rem;
+        font-weight: 350;
         margin: 40px;
+        opacity: 0.8;
     }
 
     #sign-in-button, #register-button {
