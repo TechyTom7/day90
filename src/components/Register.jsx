@@ -99,7 +99,7 @@ export default function Register(props) {
         <>
             <div className="form-container">
                 <form method="post" onSubmit={handleSubmit}>
-                    <Link id="back-link" to="/">Back</Link>
+                    <Link id="back-link" to="/" className="form-link">Back</Link>
                     <h1>Register</h1>
                     <div className="email">
                         <input type="text" placeholder="Email" name="email"/>
@@ -117,7 +117,7 @@ export default function Register(props) {
                     <div className="submit">
                         <input type="submit" value="Register" />
                     </div>
-                    <p>Already have an account? <Link to="/sign-in">Sign in</Link>!</p>
+                    <p>Already have an account? <Link to="/sign-in" className="form-link">Sign in</Link>!</p>
                     <div id='error-container'>
 
 

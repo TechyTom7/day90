@@ -142,7 +142,7 @@ a {
 }
 
 @media screen and (min-width: 680px) {
-    .opposite-link {
+    .form-link {
         font-weight: 400;
     }
 

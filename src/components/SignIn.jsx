@@ -93,7 +93,7 @@ export default function SignIn(props) {
         <>
             <div className="form-container">
                 <form method="post" onSubmit={handleSubmit}>
-                    <Link id="back-link" to="/">Back</Link>
+                    <Link id="back-link" to="/" className="form-link">Back</Link>
                     <h1>Sign in</h1>
                     <div className="email">
                         <input type="text" placeholder="Email" name="email"/>
@@ -111,7 +111,7 @@ export default function SignIn(props) {
                     <div className="submit">
                         <input type="submit" value="Sign in" />
                     </div>
-                    <p>Don't have an account? <Link to="/register" className="opposite-link">Register here</Link>!</p>
+                    <p>Don't have an account? <Link to="/register" className="form-link">Register here</Link>!</p>
                     <div id='error-container'>
 
 
