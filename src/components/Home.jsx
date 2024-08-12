@@ -62,7 +62,7 @@ export default function Home(props) {
 
 
 
-    }, [])
+    }, [window.innerWidth])
 
     return (
         <div id='home-container'>

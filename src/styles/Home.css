@@ -85,6 +85,18 @@ h2 {
     opacity: 0.9;
 }
 
+/* #stars-container {
+    width: 30%;
+    height: 30%;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -5;
+    position: absolute; /* Added to ensure children are positioned relative to this container
+
+} */
+
+
 .star {
     position: relative;
     visibility: hidden;
