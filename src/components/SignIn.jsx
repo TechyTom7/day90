@@ -111,7 +111,7 @@ export default function SignIn(props) {
                     <div className="submit">
                         <input type="submit" value="Sign in" />
                     </div>
-                    <p>Don't have an account? <Link to="/register">Register here</Link>!</p>
+                    <p>Don't have an account? <Link to="/register" className="opposite-link">Register here</Link>!</p>
                     <div id='error-container'>
 
 

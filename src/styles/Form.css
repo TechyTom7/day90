@@ -137,6 +137,12 @@ a {
     font-size: 1rem;
 }
 
+@media screen and (min-width: 680px) {
+    .opposite-link {
+        font-weight: 600;
+    }
+}
+
 /* Autofill styles */
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
