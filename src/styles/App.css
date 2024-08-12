@@ -19,3 +19,9 @@
 #planner-body-container h1, #profile-inner-container h1{
     font-size: 4rem;
 }
+
+@media screen and (min-width: 680px) {
+    * {
+        font-weight: 450px;
+    }
+}
