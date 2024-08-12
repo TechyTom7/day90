@@ -62,9 +62,27 @@ nav {
     transform: scale(1.1);
 }
 
+#get-account-btns {
+    display: flex;
+    width: 200px;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+#get-account-btns button {
+    padding: 10px 18px;
+    font-size: 1rem;
+}
+
 @media screen and (min-width: 680px) {
     .link-container .link, .link-container .active-link {
         font-size: 1.3rem;
         font-weight: 400;
+    }
+
+    #get-account-btns button {
+        padding: 10px 20px;
+        font-size: 1rem;
     }
 }

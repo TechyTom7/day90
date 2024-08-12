@@ -34,36 +34,32 @@ h2 {
     font-size: 1rem;
 }
 
-#sign-in-button {
+.sign-in-button {
     background-color: #2f3336;
 }
 
-#register-button {
+.register-button {
     background-color: #8a9dac;
 }
 
-#sign-in-button, #register-button {
+.sign-in-button, .register-button {
     border: 1px solid #FFF;
     border-radius: 8px;
-    margin-top: 30px;
-    padding: 10px 25px;
-    width: 150px;
-    margin: 15px auto;
     transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
     color: #FFF;
-    font-size: 1.2rem;
+
 }
 
-#sign-in-button:hover, #register-button:hover {
+.sign-in-button:hover, .register-button:hover {
     transform: scale(1.1);
     cursor: pointer;
 }
 
-#sign-in-button:hover {
+.sign-in-button:hover {
     background-color: #3d4245;
 }
 
-#register-button:hover {
+.register-button:hover {
     background-color: #97adbd;
 }
 
@@ -73,6 +69,14 @@ h2 {
     margin: 50px auto;
     flex-direction: column;
     justify-content: center;
+}
+
+#set-account-section button {
+    margin-top: 30px;
+    padding: 10px 25px;
+    width: 150px;
+    margin: 15px auto;
+    font-size: 1.2rem;
 }
 
 #set-account-section span {
@@ -100,12 +104,13 @@ h2 {
         opacity: 0.8;
     }
 
-    #sign-in-button, #register-button {
+    #set-account-section button {
         padding: 15px;
         margin: 20px auto;
         width: 180px;
         font-size: 1.4rem;
     }
+
 
     #set-account-section span {
         font-size: 1.3rem;

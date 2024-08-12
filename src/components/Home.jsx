@@ -35,9 +35,9 @@ export default function Home(props) {
                 <h1>Want to stay comfortably in EU countries?</h1>
                 <h2>Introducing the EU non residency planner!</h2>
                 <section id='set-account-section'>
-                    <button id='sign-in-button' onClick={handleSignInClick}>Sign in</button>
+                    <button className='sign-in-button' onClick={handleSignInClick}>Sign in</button>
                     <span>or</span>
-                    <button id='register-button' onClick={handleRegisterClick}>Register</button>
+                    <button className='register-button' onClick={handleRegisterClick}>Register</button>
                 </section>
             </div>
             <div id='stars-container'></div>
