@@ -69,8 +69,8 @@ export default function Register(props) {
 
         // Check if the email already exists in the database
 
-        const rememberMe = e.target.elements['remember_me'].checked;
-        console.log("Remembered: ", rememberMe)
+        //const rememberMe = e.target.elements['remember_me'].checked;
+        //console.log("Remembered: ", rememberMe)
 
         try {
             const response = await fetch(consts.SERVER_URL + 'register', {
@@ -81,7 +81,6 @@ export default function Register(props) {
                 body: JSON.stringify({
                     email: email,
                     password: password,
-                    remember_me: rememberMe
                 }),
             });
             const result = await response.json();
@@ -111,10 +110,10 @@ export default function Register(props) {
                     <div className="confirm-password">
                         <input type="password" placeholder="Confirm Password" name="confirm_password"/>
                     </div>
-                    <div className="remember-me">
+                    {/* <div className="remember-me">
                         <label htmlFor="remember-me">Remember Me: </label>
                         <input type="checkbox" id='remember-me' name='remember_me'/>
-                    </div>
+                    </div> */}
                     <div className="submit">
                         <input type="submit" value="Register" />
                     </div>
