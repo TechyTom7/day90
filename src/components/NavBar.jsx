@@ -22,7 +22,9 @@ export default function NavBar({ current }) {
                 <NavLink route='/' active={current === "home"}>Home</NavLink>
                 <NavLink route='/about' active={current === "about"}>About</NavLink>
                 <NavLink route='/payments' active={current === "payments"}>Payments</NavLink>
+                {user.subscribed ?
                 <NavLink route='/planner' active={current === "planner"}>Planner</NavLink>
+                : null}
                 {user.email ?
                 <NavLink route='/profile' active={current === "profile"}>Profile</NavLink>:
                 null}
