@@ -26,8 +26,8 @@ export default function NavBar({ current }) {
 
                 { !user.email ?
                     <div id="get-account-btns">
-                        <button onClick={() => {navigate('/sign-in')}} className='mini-account-btn sign-in-button'>Sign in</button>
-                        <button onClick={() => {navigate('/register')}} className='mini-account-btn register-button'>Register</button>
+                        <button onClick={() => {navigate('/sign-in')}} className='sign-in-button'>Sign in</button>
+                        <button onClick={() => {navigate('/register')}} className='register-button'>Register</button>
                     </div>
                 : null}
                 {user.email ?
