@@ -1,0 +1,82 @@
+
+
+#planner-body-container span {
+    font-size: 1.8rem;
+    display: block;
+    margin-left: 20px;
+}
+
+#dates-container {
+    /* display: flex; */
+    /* flex-wrap: wrap; */
+    box-sizing: border-box;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 1fr;
+
+    width: 95%;
+    background-color: #989898;
+    margin: 50px auto;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+@media screen and (min-width: 600px) {
+    #dates-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    #dates-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    #dates-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.month-container {
+    width: 100%;
+    height: 250px;
+    background-color: #BBB;
+    border-radius: 10px;
+}
+
+.month-container h2 {
+    padding: 0;
+    margin: 20px 0 20px 20px;
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+.month-days-container {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    width: 95%;
+    height: 75%;
+    margin: 0 auto;
+}
+
+.month-days-container button {
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    font-size: 1rem;
+    text-align: center;
+    background-color: #8a8a8a;
+    transition: transform 0.3s ease-in-out 0s;
+}
+
+.month-days-container button:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}

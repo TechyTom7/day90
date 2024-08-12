@@ -1,0 +1,92 @@
+#profile-inner-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#profile-inner-container table {
+    width: 90%;
+    margin: 10px auto;
+}
+
+#profile-inner-container table td {
+    border: 1px solid black;
+    padding: 10px;
+    width: 50%;
+    background-color: #CCC;
+}
+
+#profile-inner-container table td:nth-child(2) {
+    text-align: right;
+}
+
+#toggle-popup-button {
+    background-color: #ad7373;
+    border-radius: 10px;
+    border: 1px solid #454545;
+    color: white;
+    padding: 10px;
+    width: 100px;
+    margin: 10px auto;
+    font-size: 1.1rem;
+    transition: transform 0.3s ease-in-out;
+}
+
+#toggle-popup-button:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+#signOutPopup-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#signOutPopup {
+    background-color: #454545;
+    padding-bottom: 20px;
+    border-radius: 15px;
+    color: white;
+}
+
+#signOutPopup #buttons-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+#signOutPopup #buttons-container button {
+    padding: 5px 15px;
+    color: white;
+    border: 1px solid #FFF;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    transition: transform 0.3s ease-in-out;
+}
+
+#signOutPopup #buttons-container button:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+#signOutPopup #buttons-container button:last-child {
+    background-color: #ad7373;
+}
+
+#signOutPopup #buttons-container button:first-child {
+    background-color: #939393;
+}
+
+@media screen and (min-width: 680px) {
+    #profile-inner-container table {
+        margin: 30px auto;
+    }
+}

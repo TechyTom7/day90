@@ -1,0 +1,156 @@
+
+.form-container h1 {
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: white;
+    text-align: center;
+}
+
+form {
+    position: relative;
+    background-color: rgb(78, 78, 79);
+    width: 400px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: white;
+    z-index: 10;
+    transition: all 0.2s ease-out 0s;
+}
+
+form:hover {
+    box-shadow: 0 4px 8px 3px rgba(0, 0, 0, 0.2);
+}
+
+form .email, .password, .confirm-password {
+    margin-bottom: 10px;
+    margin-top: 20px;
+    font-size: 1.2rem;
+    width: 90%;
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    outline: none;
+}
+
+input[type="text"], input[type="password"] {
+    width: 80%;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    background-color: rgb(26, 26, 26);
+    color: white;
+    border: solid 0.5px rgb(182, 182, 182);
+    transition: all 0s, ease-out 0.1s;
+    font-family: "Avenir Next", Arial, sans-serif; /* Ensure consistent font */
+}
+
+input[type="text"]::placeholder, input[type="password"]::placeholder {
+    color: #c2c2c2;
+}
+
+input[type="text"]:hover, input[type="password"]:hover, input[type='submit']:hover {
+    border-color: rgb(255, 255, 255);
+}
+
+.remember-me {
+    position: relative;
+    margin: 10px 20px 10px 10px;
+}
+
+.forgot-password {
+    position: relative;
+    top: -2px;
+    margin: 10px 10px 10px 20px;
+}
+
+.remember-me, .forgot-password {
+    display: inline-block;
+}
+
+.remember-me input {
+    appearance: none;
+    position: relative;
+    bottom: -7px;
+    width: 20px;
+    height: 20px;
+    background-color: rgb(42, 42, 42);
+    border-radius: 2px;
+    border: solid 1px #b6babd;
+    transition: all 0.3s ease-out 0s;
+}
+
+.remember-me input:checked {
+    background-color: rgb(225, 225, 225);
+}
+
+.submit {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.submit input {
+    width: 80%;
+    font-size: 1rem;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    border-radius: 25px;
+    background-color: rgb(26, 26, 26);
+    color: white;
+    border: solid 0.5px rgb(182, 182, 182);
+    transition: all 0s, ease-out 0.1s;
+    font-family: "Avenir Next", Arial, sans-serif; /* Ensure consistent font */
+}
+
+a {
+    color: white;
+    font-weight: 270;
+}
+
+.form-container {
+    text-align: center;
+    background-color: #d2d2d2;
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: scroll;
+}
+
+.registerlink {
+    font-size: 1rem;
+}
+
+.errorMsg {
+    color: red;
+    font-size: 1rem;
+}
+
+#back-link {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 1rem;
+}
+
+/* Autofill styles */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+    background-color: rgb(26, 26, 26) !important;
+    -webkit-box-shadow: 0 0 0 1000px rgb(26, 26, 26) inset !important;
+    -webkit-text-fill-color: white !important;
+    border: solid 0.5px rgb(182, 182, 182) !important;
+    border-radius: 20px !important;
+    font-family: "Avenir Next", Arial, sans-serif !important; /* Ensure consistent font */
+    font-size: 1rem !important; /* Ensure consistent font size */
+    transition: background-color 5000s ease-in-out 0s !important;
+}
+
+input:-webkit-autofill::first-line {
+    color: white !important;
+}

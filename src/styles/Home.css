@@ -1,0 +1,111 @@
+#home-container {
+    position: fixed;
+    left: 0;
+    background-color: #25292d;
+    width: 100%;
+    height: 100vh;
+}
+
+#home-info-container {
+    position: fixed;
+    width: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: #d2d2d2;
+    margin-top: 100px;
+}
+
+h1 {
+    font-weight: 600;
+    margin: 20px;
+}
+
+h2 {
+    font-weight: 350;
+    opacity: 0.8;
+    font-size: 1.2rem;
+    margin: 30px;
+}
+
+.btn-link {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+#sign-in-button {
+    background-color: #2f3336;
+}
+
+#register-button {
+    background-color: #8a9dac;
+}
+
+#sign-in-button, #register-button {
+    border: 1px solid #FFF;
+    border-radius: 8px;
+    margin-top: 30px;
+    padding: 10px 25px;
+    width: 150px;
+    margin: 15px auto;
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    color: #FFF;
+    font-size: 1.2rem;
+}
+
+#sign-in-button:hover, #register-button:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+#sign-in-button:hover {
+    background-color: #3d4245;
+}
+
+#register-button:hover {
+    background-color: #97adbd;
+}
+
+#set-account-section {
+    display: flex;
+    width: 300px;
+    margin: 50px auto;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#set-account-section span {
+    color: #FFF;
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.star {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    z-index: -5;
+}
+
+@media screen and (min-width: 680px) {
+    #home-info-container {
+        margin-top: 80px;
+    }
+
+    h2 {
+        font-size: 1.4rem;
+        margin: 40px;
+    }
+
+    #sign-in-button, #register-button {
+        padding: 15px;
+        margin: 20px auto;
+        width: 180px;
+        font-size: 1.4rem;
+    }
+
+    #set-account-section span {
+        font-size: 1.3rem;
+    }
+}
