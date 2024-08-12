@@ -20,8 +20,16 @@
     font-size: 4rem;
 }
 
+a {
+    font-weight: 270;
+}
+
 @media screen and (min-width: 680px) {
     * {
         font-weight: 450px;
+    }
+
+    a {
+        font-weight: 400;
     }
 }
