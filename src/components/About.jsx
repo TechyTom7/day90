@@ -61,7 +61,7 @@ export default function Home() {
                     </p>
                     <p>
                         With this basic guide, you should be able to master the skills of using the EU tool we have provided
-                        for you! Of course we will keep implementing new features as time goes. We hope you will find it
+                        for you! We will also continuously make improvements to the app as time passes. We hope you will find it
                         way easier to manage your stay in an EU country!
                     </p>
                 </div>

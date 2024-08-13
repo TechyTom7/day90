@@ -17,6 +17,12 @@
     overflow: scroll;
 }
 
+@media screen and (max-height: 800px) {
+    #about-info-container {
+        height: 92%;
+    }
+}
+
 #about-container h2 {
     font-size: 2.5rem;
     font-weight: 600;
