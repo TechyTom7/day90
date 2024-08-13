@@ -96,12 +96,10 @@ export default function SignIn(props) {
         setLoadingSignIn(false);
     }
 
-    if (loadingSignIn) {
-        return <Loading>Signing in</Loading>
-    }
 
     return (
         <>
+            {(loadingSignIn) ? <Loading>Signing in</Loading> : null}
             <div className="form-container">
                 <form method="post" onSubmit={handleSubmit}>
                     <Link id="back-link" to="/" className="form-link">Back</Link>
