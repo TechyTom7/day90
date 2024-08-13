@@ -30,7 +30,7 @@ export default function Home(props) {
             image.style.left = Math.floor(Math.random() * window.innerWidth) + "px";
             starsContainer.appendChild(image);
         }
-    }, [window.innerWidth])
+    }, [])
 
     return (
         <div id='home-container'>
