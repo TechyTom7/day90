@@ -66,7 +66,7 @@ export default function App() {
     setUser
   }
 
-  if (loading) {
+  if (!loading) {
     return <Loading>Loading user</Loading>
   }
 
