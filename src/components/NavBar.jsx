@@ -19,30 +19,38 @@ export default function NavBar({ current }) {
     return (
         <div id='nav-container'>
             <nav>
-                <div id='nav-filler'></div>
-                <div id='links-container'>
-                    <NavLink route='/' active={current === "home"}>Home</NavLink>
-                    <NavLink route='/about' active={current === "about"}>About</NavLink>
-                    <NavLink route='/payments' active={current === "payments"}>Payments</NavLink>
+                <div id='nav-inner-container' style={{
+                    margin: (user.email) ? "0 auto" : null,
+                    justifyContent: (user.email) ? "center" : null
+                }}>
+                    {!user.email ? <div id='nav-filler'></div> : null}
+
+                    <div id='links-container' style={{
+                        width: (user.email) ? '80%' : null,
+                        justifyContent: (user.email) ? 'space-around' : null
+                    }}>
+                        <NavLink route='/' active={current === "home"}>Home</NavLink>
+                        <NavLink route='/about' active={current === "about"}>About</NavLink>
+                        <NavLink route='/payments' active={current === "payments"}>Payments</NavLink>
 
 
-                    {user.email ?
-                    <NavLink route='/planner' active={current === "planner"}>Planner</NavLink>
-                    : null}
-                    {user.email ?
-                    <NavLink route='/profile' active={current === "profile"}>Profile</NavLink>:
-                    null}
-                </div>
-
-                { !user.email ?
-                    <div id="get-account-btns">
-                        <button onClick={() => {navigate('/sign-in')}} className='sign-in-button'>Sign in</button>
-                        <button onClick={() => {navigate('/register')}} className='register-button'>Register</button>
+                        {user.email ?
+                        <NavLink route='/planner' active={current === "planner"}>Planner</NavLink>
+                        : null}
+                        {user.email ?
+                        <NavLink route='/profile' active={current === "profile"}>Profile</NavLink>:
+                        null}
                     </div>
-                : null}
+
+                    { !user.email ?
+                        <div id="get-account-btns">
+                            <button onClick={() => {navigate('/sign-in')}} className='sign-in-button'>Sign in</button>
+                            <button onClick={() => {navigate('/register')}} className='register-button'>Register</button>
+                        </div>
+                    : null}
 
 
-
+                </div>
             </nav>
         </div>
     );
