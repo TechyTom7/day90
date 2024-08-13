@@ -67,7 +67,7 @@ export default function App() {
   }
 
   if (loading) {
-    return <Loading>Loading user</Loading>
+    return <Loading>Setting up page</Loading>
   }
 
   return (
