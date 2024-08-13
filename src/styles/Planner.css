@@ -67,7 +67,7 @@ html, body {
     width: 95%;
     height: 75%;
     margin: 0 auto;
-    color: black;
+
 }
 
 .month-days-container button {
@@ -81,6 +81,7 @@ html, body {
     font-size: 1rem;
     text-align: center;
     background-color: #8a8a8a;
+    color: black;
     transition: transform 0.3s ease-in-out 0s;
 }
 
