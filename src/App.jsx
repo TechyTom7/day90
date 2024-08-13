@@ -18,6 +18,7 @@ import Planner from './components/Planner'
 import Payments from './components/Payments'
 import consts from './consts'
 import Profile from './components/Profile'
+import Loading from './components/Loading'
 
 export const appContext = createContext({
   user: {},
@@ -26,8 +27,10 @@ export const appContext = createContext({
 
 export default function App() {
   const [user, setUser] = useState({});
+  const [loading, setLoading] = useState(false)
 
   const loadUser = async () => {
+    setLoading(true)
     try {
       let response = await fetch(consts.SERVER_URL + "get_user", {
           credentials: "include",
@@ -39,14 +42,15 @@ export default function App() {
       let jsonified = await response.json()
       if (!response.ok) {
           console.log(jsonified.error)
-          return;
-      }
-      console.log("Got user:", jsonified)
 
-      setUser(jsonified)
+      } else {
+          console.log("Got user:", jsonified)
+          setUser(jsonified)
+      }
     } catch (e){
         throw new Error("Something went wrong retrieving the data: ", e)
     }
+    setLoading(false)
   }
 
   useEffect(()=>{
@@ -60,6 +64,10 @@ export default function App() {
   const context = {
     user,
     setUser
+  }
+
+  if (loading) {
+    return <Loading>Loading user</Loading>
   }
 
   return (
