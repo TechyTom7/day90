@@ -89,6 +89,8 @@ export default function SignIn(props) {
                 localStorage.setItem('user-token', result.user.email)
                 console.log(result);
                 navigate("/");
+            } else {
+                addErrorMsg("Invalid password")
             }
         } catch (error) {
             console.error('Error:', error);
