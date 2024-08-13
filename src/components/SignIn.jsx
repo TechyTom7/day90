@@ -2,12 +2,14 @@ import { useState, useEffect, useRef, useContext } from "react";
 import { Link, useNavigate } from 'react-router-dom'
 import consts from "../consts";
 import { appContext } from "../App";
+import Loading from "./Loading";
 
 export default function SignIn(props) {
 
     const { setUser } = useContext(appContext)
 
     const [data, setData] = useState(null);
+    const [loadingSignIn, setLoadingSignIn] = useState(false)
     const navigate = useNavigate();
 
     const addErrorMsg = msg => {
@@ -29,12 +31,14 @@ export default function SignIn(props) {
 
         e.preventDefault(); // Prevent the default form submission
         clearErrors();
+        setLoadingSignIn(true);
 
         // Check if the email matches a regex expressions for email
         const email = e.target.elements.email.value;
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
             addErrorMsg("Please enter a valid email address");
+            setLoadingSignIn(false);
             return;
         }
 
@@ -51,6 +55,7 @@ export default function SignIn(props) {
         const existingEmailResult = await existingEmailResponse.json();
         if (!existingEmailResult.exists) {
             addErrorMsg("Email doesn't exist");
+            setLoadingSignIn(false);
             return;
         }
 
@@ -58,6 +63,7 @@ export default function SignIn(props) {
 
         if (password.length <= 7) {
             addErrorMsg("Password must be at least 8 characters long");
+            setLoadingSignIn(false);
             return;
         }
 
@@ -87,10 +93,12 @@ export default function SignIn(props) {
         } catch (error) {
             console.error('Error:', error);
         }
+        setLoadingSignIn(false);
     }
 
     return (
         <>
+            {(loadingSignIn) ? <Loading>Signing in</Loading> : null}
             <div className="form-container">
                 <form method="post" onSubmit={handleSubmit}>
                     <Link id="back-link" to="/" className="form-link">Back</Link>
