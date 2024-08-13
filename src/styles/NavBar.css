@@ -6,11 +6,35 @@ nav {
     position: fixed;
     top: 0;
     left: 0;
+    display: grid;
+    justify-content: center;
+    grid-template-rows: repeat(2, 2fr);
+    grid-template-columns: 1fr; /* Center items horizontally */
+    /*align-items: center;
+    flex-wrap: wrap; /* Enable wrapping*/
+    padding: 10px; /*Optional: Add padding for spacing */
+}
+
+#nav-filler {
+    display: none;
+}
+
+#links-container {
+    /* height: auto; /* Adjust height to auto to allow wrapping
+    position: fixed;
+    top: 0;
+    left: 0;
     display: flex;
-    justify-content: center; /* Center items horizontally */
+    justify-content: center; /* Center items horizontally
     align-items: center;
-    flex-wrap: wrap; /* Enable wrapping */
+    flex-wrap: wrap; /* Enable wrapping
     padding: 10px; /* Optional: Add padding for spacing */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
 }
 
 #nav-container {
@@ -68,7 +92,7 @@ nav {
     justify-content: center;
     align-items: center;
     gap: 5px;
-    margin: 5px 0;
+    margin: 5px auto;
 }
 
 #get-account-btns button {
@@ -89,6 +113,16 @@ nav {
 
     #get-account-btns {
         margin: 0;
+    }
+
+    nav {
+        display: grid;
+        grid-template-columns: 30% 40% 30%;
+        grid-template-rows: 1fr;
+    }
+
+    #nav-filler {
+        display: inline;
     }
 }
 

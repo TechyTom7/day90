@@ -19,10 +19,20 @@ export default function NavBar({ current }) {
     return (
         <div id='nav-container'>
             <nav>
-                <NavLink route='/' active={current === "home"}>Home</NavLink>
-                <NavLink route='/about' active={current === "about"}>About</NavLink>
-                <NavLink route='/payments' active={current === "payments"}>Payments</NavLink>
+                <div id='nav-filler'></div>
+                <div id='links-container'>
+                    <NavLink route='/' active={current === "home"}>Home</NavLink>
+                    <NavLink route='/about' active={current === "about"}>About</NavLink>
+                    <NavLink route='/payments' active={current === "payments"}>Payments</NavLink>
 
+
+                    {user.email ?
+                    <NavLink route='/planner' active={current === "planner"}>Planner</NavLink>
+                    : null}
+                    {user.email ?
+                    <NavLink route='/profile' active={current === "profile"}>Profile</NavLink>:
+                    null}
+                </div>
 
                 { !user.email ?
                     <div id="get-account-btns">
@@ -30,12 +40,7 @@ export default function NavBar({ current }) {
                         <button onClick={() => {navigate('/register')}} className='register-button'>Register</button>
                     </div>
                 : null}
-                {user.email ?
-                <NavLink route='/planner' active={current === "planner"}>Planner</NavLink>
-                : null}
-                {user.email ?
-                <NavLink route='/profile' active={current === "profile"}>Profile</NavLink>:
-                null}
+
 
 
             </nav>
