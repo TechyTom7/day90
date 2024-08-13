@@ -2,10 +2,12 @@ import { useState, useEffect, useRef, useContext } from "react";
 import { appContext } from "../App";
 import { Link, useNavigate } from 'react-router-dom'
 import consts from "../consts";
+import Loading from "./Loading";
 
 export default function Register(props) {
 
     const [data, setData] = useState(null);
+    const [registering, setRegistering] = useState(false)
     const navigate = useNavigate();
 
     const {setUser} = useContext(appContext)
@@ -30,11 +32,14 @@ export default function Register(props) {
         e.preventDefault(); // Prevent the default form submission
         clearErrors();
 
+        setRegistering(true);
+
         // Check if the email matches a regex expressions for email
         const email = e.target.elements.email.value;
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
             addErrorMsg("Please enter a valid email address");
+            setRegistering(false);
             return;
         }
 
@@ -51,6 +56,7 @@ export default function Register(props) {
         const existingEmailResult = await existingEmailResponse.json();
         if (existingEmailResult.exists) {
             addErrorMsg("Email already exists");
+            setRegistering(false);
             return;
         }
 
@@ -59,11 +65,13 @@ export default function Register(props) {
 
         if (password !== confirmPassword) {
             addErrorMsg("Password and confirm password must be equivalent");
+            setRegistering(false);
             return;
         }
 
         if (password.length <= 7) {
             addErrorMsg("Password must be at least 8 characters long");
+            setRegistering(false);
             return;
         }
 
@@ -93,10 +101,12 @@ export default function Register(props) {
         } catch (error) {
             console.error('Error:', error);
         }
+        setRegistering(false);
     }
 
     return (
         <>
+            {(registering ? <Loading>Registering</Loading> : null)}
             <div className="form-container">
                 <form method="post" onSubmit={handleSubmit}>
                     <Link id="back-link" to="/" className="form-link">Back</Link>
