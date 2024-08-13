@@ -69,7 +69,7 @@ export default function SignIn(props) {
 
         // Check if the email already exists in the database
 
-        //const rememberMe = e.target.elements['remember_me'].checked;
+        const rememberMe = e.target.elements['remember_me'].checked;
 
         try {
             const response = await fetch(consts.SERVER_URL + 'sign_in', {
@@ -86,7 +86,9 @@ export default function SignIn(props) {
             if (response.ok) {
                 const result = await response.json();
                 setUser(result.user);
-                localStorage.setItem('user-token', result.user.email)
+                if (rememberMe) {
+                    localStorage.setItem('user-token', result.user.email)
+                }
                 console.log(result);
                 navigate("/");
             } else {
@@ -112,10 +114,11 @@ export default function SignIn(props) {
                     <div className="password">
                         <input type="password" placeholder="Password" name="password"/>
                     </div>
-                    {/* <div className="remember-me">
+                    <div className="remember-me">
                         <label htmlFor="remember-me">Remember Me: </label>
                         <input type="checkbox" id='remember-me' name='remember_me'/>
                     </div>
+                    {/*
                     <div className="forgot-password">
                         <a href="/forgot_password">Forgot Password</a>
                     </div> */}

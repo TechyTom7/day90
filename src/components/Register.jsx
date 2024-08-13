@@ -77,7 +77,7 @@ export default function Register(props) {
 
         // Check if the email already exists in the database
 
-        //const rememberMe = e.target.elements['remember_me'].checked;
+        const rememberMe = e.target.elements['remember_me'].checked;
         //console.log("Remembered: ", rememberMe)
 
         try {
@@ -95,7 +95,9 @@ export default function Register(props) {
             console.log(result)
             setUser(result.user);
 
-            localStorage.setItem('user-token', result.user.email)
+            if (rememberMe) {
+                localStorage.setItem('user-token', result.user.email)
+            }
 
             navigate("/");
         } catch (error) {
@@ -120,10 +122,10 @@ export default function Register(props) {
                     <div className="confirm-password">
                         <input type="password" placeholder="Confirm Password" name="confirm_password"/>
                     </div>
-                    {/* <div className="remember-me">
+                    <div className="remember-me">
                         <label htmlFor="remember-me">Remember Me: </label>
                         <input type="checkbox" id='remember-me' name='remember_me'/>
-                    </div> */}
+                    </div>
                     <div className="submit">
                         <input type="submit" value="Register" />
                     </div>

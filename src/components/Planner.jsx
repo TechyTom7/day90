@@ -41,7 +41,7 @@ export default function Planner(props) {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
-                    "x-token": localStorage.getItem('user-token')
+                    "x-token": user.email
                 },
 
                 body: JSON.stringify({

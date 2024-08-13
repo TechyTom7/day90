@@ -55,6 +55,12 @@ input[type="text"]:hover, input[type="password"]:hover, input[type='submit']:hov
 
 input[type='submit'] {
     font-weight: 450;
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+input[type='submit']:hover {
+    transform: scale(1.05);
+    cursor: pointer;
 }
 
 .remember-me {
@@ -82,6 +88,10 @@ input[type='submit'] {
     border-radius: 2px;
     border: solid 1px #b6babd;
     transition: all 0.3s ease-out 0s;
+}
+
+.remember-me input:hover {
+    cursor: pointer;
 }
 
 .remember-me input:checked {
@@ -143,6 +153,7 @@ a {
 
 .form-link {
     font-weight: 500;
+    color: white;
 }
 
 @media screen and (min-width: 680px) {
