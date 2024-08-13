@@ -55,6 +55,7 @@
     text-decoration: none;
     font-size: 0.8rem;
     font-weight: 450;
+    color: white;
 }
 
 @media screen and (min-width: 680px) {
