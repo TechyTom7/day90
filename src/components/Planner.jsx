@@ -60,7 +60,9 @@ export default function Planner(props) {
             });
 
             if (!response.ok) {
-                throw new Error("Response not ok");
+                let json = await response.json();
+                let errorMsg = json.error
+                throw new Error(errorMsg);
             }
 
             let data = await response.json();
@@ -68,6 +70,11 @@ export default function Planner(props) {
             setUser(data)
             setToggled(true);
         } catch (e) {
+            if (e == 'User not authorized') {
+                navigate('/')
+            } else if (e == "User not subscribed") {
+                navigate('/payments')
+            }
             console.log("Something went wrong toggling the date: ", e);
         }
     };
