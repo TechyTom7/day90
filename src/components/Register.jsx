@@ -106,10 +106,6 @@ export default function Register(props) {
         setRegistering(false);
     }
 
-    useEffect(() => {
-        setOnFirst(false)
-    }, [])
-
     return (
         <>
             {(registering ? <Loading>Registering</Loading> : null)}
@@ -128,7 +124,7 @@ export default function Register(props) {
                     </div>
                     <div className="remember-me">
                         <label htmlFor="remember-me">Remember Me: </label>
-                        <input type="checkbox" id='remember-me' name='remember_me'/>
+                        <input type="checkbox" id='remember-me' name='remember_me' defaultChecked={true}/>
                     </div>
                     <div className="submit">
                         <input type="submit" value="Register" />
