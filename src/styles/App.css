@@ -6,13 +6,13 @@
     position: fixed;
     left: 0;
     background-color: #d2d2d2;
-    width: 100%;
+    width: 120vw;
     height: 100vh;
     overflow: scroll;
 }
 
 #about-info-container, #planner-body-container, #profile-inner-container {
-    width: 90%;
+    width: 90vw;
     margin: 100px auto 0;
 }
 
