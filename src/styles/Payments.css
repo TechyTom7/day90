@@ -41,15 +41,36 @@
     padding: 10px 15px;
     border: 1px solid #fff;
     border-radius: 5px;
-    background: linear-gradient(135deg, #473a55, #2d2435);
+    background-image: linear-gradient(135deg, #473a55, #2d2435);
     color: #fff;
     font-size: 1.2rem;
     margin-top: 20px;
     position: relative;
-    transition: transform 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
 }
 
 #subscribe-button-1:hover {
     transform: scale(1.1);
+    /* background-image: linear-gradient(135deg, #655174, #322c37); */
     cursor: pointer;
 }
+
+#subscribe-button-1:hover .gradient-2 {
+    opacity: 1;
+}
+
+.gradient-2 {
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(135deg, #655174, #322c37);
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+

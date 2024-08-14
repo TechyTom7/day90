@@ -11,14 +11,14 @@
     grid-template-columns: 1fr 3fr; */
     position: fixed;
     top: 10%;
-    height: 63vh;
-
+    height: 80vh;
 }
 
 #about-info-container {
     position: relative;
     bottom: 10%;
     height: 100%;
+    margin-bottom: 100px;
     overflow: scroll;
 }
 

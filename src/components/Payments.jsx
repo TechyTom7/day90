@@ -10,7 +10,12 @@ export default function Payments(props) {
                 <div id="monthly-deal-container">
                     <h3>Get access to our EU planner</h3>
                     <p>For a <strong>low</strong> price of <strong>£19.99</strong> per month!</p>
-                    <button id="subscribe-button-1">Subscribe</button>
+                    <button id="subscribe-button-1">
+                        Subscribe
+                        <div className="gradient-2">
+                            Subscribe
+                        </div>
+                    </button>
                 </div>
             </div>
         </div>
