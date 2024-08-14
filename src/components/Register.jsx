@@ -106,6 +106,10 @@ export default function Register(props) {
         setRegistering(false);
     }
 
+    useEffect(() => {
+        setOnFirst(false)
+    }, [])
+
     return (
         <>
             {(registering ? <Loading>Registering</Loading> : null)}
@@ -130,10 +134,7 @@ export default function Register(props) {
                         <input type="submit" value="Register" />
                     </div>
                     <p>Already have an account? <Link to="/sign-in" className="form-link">Sign in</Link>!</p>
-                    <div id='error-container'>
-
-
-                    </div>
+                    <div id='error-container'></div>
                 </form>
             </div>
         </>

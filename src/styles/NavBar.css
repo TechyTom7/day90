@@ -35,7 +35,7 @@ nav {
 }
 
 .link-container .link, .link-container .active-link {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: 450;
     text-decoration-thickness: 1.5px;
     text-underline-offset: 2px;
@@ -76,7 +76,8 @@ nav {
 }
 
 #get-account-btns button {
-    padding: 8px 15px;
+    /* padding: 8px 15px; */
+    padding: 3% 4.5%;
     font-size: 1rem;
 }
 
@@ -110,8 +111,20 @@ nav {
     }
 
     #get-account-btns {
-        gap: 2px;
+        gap: 1%;
         width: 28%;
         margin-top: 0;
+    }
+}
+
+@media screen and (max-width: 900px) and (min-width: 650px) {
+    .link-container .link, .link-container .active-link {
+        font-size: 1.2rem;
+
+    }
+
+    #links-container {
+        justify-content: center;
+        gap: 12%;
     }
 }

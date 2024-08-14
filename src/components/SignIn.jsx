@@ -116,7 +116,11 @@ export default function SignIn(props) {
                     </div>
                     <div className="remember-me">
                         <label htmlFor="remember-me">Remember Me: </label>
-                        <input type="checkbox" id='remember-me' name='remember_me'/>
+                        <input
+                        type="checkbox"
+                        id='remember-me'
+                        name='remember_me'
+                        defaultChecked={true}/>
                     </div>
                     {/*
                     <div className="forgot-password">
