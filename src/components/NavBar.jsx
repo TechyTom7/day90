@@ -34,7 +34,7 @@ export default function NavBar({ current }) {
                         <NavLink route='/payments' active={current === "payments"}>Payments</NavLink>
 
 
-                        {user.email ?
+                        {user.subscribed ?
                         <NavLink route='/planner' active={current === "planner"}>Planner</NavLink>
                         : null}
                         {user.email ?

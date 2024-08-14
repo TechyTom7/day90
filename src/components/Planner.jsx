@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { appContext } from "../App";
+import { useNavigate } from "react-router-dom";
 import NavBar from "./NavBar";
 import consts from "../consts";
 import '../styles/Planner.css';
@@ -10,6 +11,8 @@ export default function Planner(props) {
     const [toggled, setToggled] = useState(false);
 
     const { user, setUser } = useContext(appContext)
+
+    const navigate = useNavigate()
 
     useEffect(() => {
         if (!user) return;
@@ -34,6 +37,10 @@ export default function Planner(props) {
             setToggled(false);
         };
     }, [user]);
+
+    useEffect(() => {
+        if (!user.subscribed) navigate("/")
+    })
 
     const toggleDate = async (year, month, day) => {
         try {
