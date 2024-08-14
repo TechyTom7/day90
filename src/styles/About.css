@@ -2,6 +2,10 @@
     margin: 0 0 40px;
 }
 
+#about-container {
+    width: 120%;
+}
+
 #about-inner-container {
     /* display: grid;
     position: fixed;
@@ -114,6 +118,7 @@
         top: 10%;
         height: 90vh;
         grid-template-columns: 1fr 3fr;
+        width: 100vw;
     }
 
 

@@ -6,6 +6,15 @@ html, body {
     background-color: #718391;
 }
 
+#planner-container {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#planner-body-container {
+    width: 100vw;
+}
 
 #planner-body-container span {
     font-size: 1.8rem;

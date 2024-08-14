@@ -46,7 +46,7 @@ export default function Planner(props) {
 
                 body: JSON.stringify({
                     year: year,
-                    month: month + 1, // Months are 0-indexed in JS, adding 1 to match your server-side logic
+                    month: month + 1,
                     day: day,
                 }),
                 credentials: "include",
