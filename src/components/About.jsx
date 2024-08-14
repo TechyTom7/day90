@@ -5,7 +5,6 @@ import consts from "../consts";
 export default function Home() {
     return (
         <div id='about-container'>
-            <NavBar current={"about"}/>
             <div id="about-inner-container">
                 <Contents/>
                 <div id='about-info-container'>

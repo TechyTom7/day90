@@ -1,5 +1,5 @@
 import { useState, useEffect, createContext } from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom'
 // Get the css file
 import './styles/App.css'
 import './styles/About.css'
@@ -19,6 +19,7 @@ import Payments from './components/Payments'
 import consts from './consts'
 import Profile from './components/Profile'
 import Loading from './components/Loading'
+import NavBar from './components/NavBar'
 
 export const appContext = createContext({
   user: {},
@@ -28,6 +29,8 @@ export const appContext = createContext({
 export default function App() {
   const [user, setUser] = useState({});
   const [loading, setLoading] = useState(false)
+  const [currentPage, setCurrentPage] = useState("")
+  const location = useLocation()
 
   const loadUser = async () => {
     setLoading(true)
@@ -55,11 +58,16 @@ export default function App() {
 
   useEffect(()=>{
     loadUser()
+    setCurrentPage(window.location.pathname)
   }, [])
 
   useEffect(()=>{
     console.log("User updated:", user)
   }, [user])
+
+  useEffect(()=>{
+    setCurrentPage(window.location.pathname)
+  }, [location])
 
   const context = {
     user,
@@ -71,8 +79,9 @@ export default function App() {
   // }
 
   return (
-    <BrowserRouter>
-      <appContext.Provider value={context}>
+    <appContext.Provider value={context}>
+      <NavBar current={currentPage} />
+      <main>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
@@ -84,7 +93,7 @@ export default function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-      </appContext.Provider>
-    </BrowserRouter>
+      </main>
+    </appContext.Provider>
   )
 }

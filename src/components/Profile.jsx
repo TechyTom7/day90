@@ -28,7 +28,6 @@ export default function Profile(props) {
 
     return (
         <div id='profile-container'>
-            <NavBar current={"profile"}/>
             <div id="profile-inner-container">
                 <h1>Profile</h1>
                 <table>

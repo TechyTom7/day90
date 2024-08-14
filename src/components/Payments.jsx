@@ -4,7 +4,6 @@ import "../styles/Payments.css"
 export default function Payments(props) {
     return (
         <div id="payments-container">
-            <NavBar current={"payments"}/>
             <div id="payments-inner-container">
                 <h1>Subscribe to our best deal!</h1>
                 <div id="monthly-deal-container">

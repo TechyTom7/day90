@@ -34,7 +34,6 @@ export default function Home(props) {
 
     return (
         <div id='home-container'>
-            <NavBar current={"home"}/>
             <div id="home-info-container">
                 <h1>Want to stay comfortably in EU countries?</h1>
                 <h2>Introducing the EU non residency planner!</h2>

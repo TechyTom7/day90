@@ -101,7 +101,6 @@ export default function Planner(props) {
 
     return (
         <div id="planner-container">
-            <NavBar current={"planner"} />
             <div id="planner-body-container">
                 <h1>Planner</h1>
                 <span id="days-info">{(user.dates.length < 90) ?

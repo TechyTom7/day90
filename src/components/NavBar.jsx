@@ -29,16 +29,16 @@ export default function NavBar({ current }) {
                         width: (user.email) ? '80%' : null,
                         justifyContent: (user.email) ? 'space-around' : null
                     }}>
-                        <NavLink route='/' active={current === "home"}>Home</NavLink>
-                        <NavLink route='/about' active={current === "about"}>About</NavLink>
-                        <NavLink route='/payments' active={current === "payments"}>Payments</NavLink>
+                        <NavLink route='/' active={current === "/"}>Home</NavLink>
+                        <NavLink route='/about' active={current === "/about"}>About</NavLink>
+                        <NavLink route='/payments' active={current === "/payments"}>Payments</NavLink>
 
 
                         {user.subscribed ?
-                        <NavLink route='/planner' active={current === "planner"}>Planner</NavLink>
+                        <NavLink route='/planner' active={current === "/planner"}>Planner</NavLink>
                         : null}
                         {user.email ?
-                        <NavLink route='/profile' active={current === "profile"}>Profile</NavLink>:
+                        <NavLink route='/profile' active={current === "/profile"}>Profile</NavLink>:
                         null}
                     </div>
 

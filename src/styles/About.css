@@ -1,31 +1,46 @@
+/*
+        to switch branches
+            git checkout main
+            git checkout doug
+
+            git checkout -b newbranchname   <- this would create a new branch called "newbranchname" and switch to it
+
+        if you want to merge one branch into another..
+            1. switch to the branch you want to merge INTO
+            2. run      git merge branchtomerge
+                    e.g.
+                            git add .
+                            git commit -m "doug changing stuff"
+                            git checkout main
+                            git merge doug
+*/
+
+#about-container {
+    left: 0;
+    background-color: #d2d2d2;
+    width: 100%;
+}
+
 #about-container h2, #about-container p {
     margin: 0 0 40px;
 }
 
 
 #about-inner-container {
-    /* display: grid;
-    position: fixed;
-    top: 10%;
-    height: 90vh;
-    grid-template-columns: 1fr 3fr; */
-    position: fixed;
-    top: 10%;
-    height: 80vh;
+    display: flex;
+    flex-direction: column;
 }
 
 #about-info-container {
     position: relative;
     bottom: 10%;
     height: 100%;
-    margin-bottom: 100px;
-    overflow: scroll;
+    padding-bottom: 150px;
+    /* overflow: scroll; */
 }
 
 @media screen and (max-height: 800px) {
-    #about-info-container {
-        height: 92%;
-    }
+
 }
 
 #about-container h2 {
@@ -38,28 +53,19 @@
 }
 
 #contents-container {
-    position: relative;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    min-width: 400px;
+    translate: -50% 0;
 }
 
 #table-of-contents {
-    /*
-    width: 24%;
-    height: 30%;
-    top: 40%;
-    display: flex;
-    align-items: center;
-    margin-left: 2%;*/
-    position: fixed;
-    bottom: 0%;
-    left: 50%;
-    width: 90%;
-    padding: 0 0;
-    margin: 0 0 15px;
-    transform: translateX(-50%);
+
     background-color: grey;
     border-radius: 10px;
     border: 2px solid #666;
-    z-index: 2;
+
 }
 
 #table-of-contents ul {
@@ -108,15 +114,17 @@
     }
 
     #about-inner-container {
-        margin-top: 0;
         display: grid;
-        position: relative;
-        top: 10%;
-        height: 90vh;
         grid-template-columns: 1fr 3fr;
-        width: 100vw;
     }
 
+    #about-info-container {
+        padding-bottom: 0;
+    }
 
+    #contents-container {
+        position: static;
+        translate: 0% 0%;
+    }
 
 }
