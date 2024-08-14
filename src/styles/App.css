@@ -6,7 +6,7 @@
     position: fixed;
     left: 0;
     background-color: #d2d2d2;
-    width: 120vw;
+    width: 100vw;
     height: 100vh;
     overflow: scroll;
 }
