@@ -66,9 +66,9 @@ export default function App() {
     setUser
   }
 
-  if (loading) {
-    return <Loading>Setting up page</Loading>
-  }
+  // if (loading) {
+  //   return <Loading>Setting up page</Loading>
+  // }
 
   return (
     <BrowserRouter>
