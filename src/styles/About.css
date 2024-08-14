@@ -39,7 +39,6 @@
 
 #contents-container {
     position: relative;
-
 }
 
 #table-of-contents {
@@ -98,12 +97,12 @@
     }
 
     #table-of-contents {
-        width: 24%;
+        width: 90%;
         height: 30%;
         top: 40%;
-        transform: translateX(-205%);
+        /* transform: translateX(-205%); */
+        position: relative;
         display: flex;
-        position: fixed;
         align-items: center;
         margin-left: 2%;
     }

@@ -6,8 +6,7 @@ export default function Home() {
     return (
         <div id='about-container'>
             <NavBar current={"about"}/>
-            <div id="about-inner-container"> {/* grid with 1fr 3fr */}
-                {/* table of contents here */}
+            <div id="about-inner-container">
                 <Contents/>
                 <div id='about-info-container'>
                     <h2 id="EU-rule">A bit about the 90/180 rule</h2>
@@ -44,16 +43,16 @@ export default function Home() {
                     </p>
                     <p>
                         Before we move on, we have to select the days we were in an EU country. To do that, simply click
-                        on the date you were in the country. The button to click is circular, and contains the day in the 180 day
+                        on the date you were in an EU country. The button to click is circular, and contains the day in the 180 day
                         range calendar. For now the date has to be before or the current date of whenever you're using this tool.
                     </p>
                     <p>
                         If you've selected a wrong date, simply click on that date again to remove that date. Also keep in
                         mind that the selected dates will show a green colour. If the current date is selected (which
-                        should mean that you are in that country right now) will show a light green colour.
+                        should mean that you are in that country right now), it will show a light green colour.
                     </p>
                     <p>
-                        Now we have selected the days we were in the EU country, we can now take a look at the text above
+                        Now we have selected the days we were in an EU country, we can now take a look at the text above
                         the calendar. The text above basically shows how many days we have left to schedule based on the
                         previous dates we have been in the EU country. According to the EU regulations, the amount of days
                         selected in our unique calendar should not exceed 90. It will automatically warn you that you can't
