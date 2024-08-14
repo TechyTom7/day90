@@ -10,10 +10,7 @@ html, body {
     position: relative;
     left: 50%;
     transform: translateX(-50%);
-}
-
-#planner-body-container {
-    width: 100vw;
+    border: red solid 3px;
 }
 
 #planner-body-container span {

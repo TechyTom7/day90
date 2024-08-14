@@ -12,7 +12,7 @@
 }
 
 #about-info-container, #planner-body-container, #profile-inner-container {
-    width: 90%;
+    width: 90vw;
     margin: 100px auto 0;
 }
 
