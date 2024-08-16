@@ -23,6 +23,7 @@ import Loading from './components/Loading'
 export const appContext = createContext({
   user: {},
   setUser: () => {},
+  loadUser: async () => {}
 })
 
 export default function App() {
@@ -63,7 +64,8 @@ export default function App() {
 
   const context = {
     user,
-    setUser
+    setUser,
+    loadUser
   }
 
   // if (loading) {
