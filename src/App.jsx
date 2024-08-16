@@ -24,6 +24,7 @@ import NavBar from './components/NavBar'
 export const appContext = createContext({
   user: {},
   setUser: () => {},
+  loadUser: async () => {}
 })
 
 export default function App() {
@@ -71,7 +72,8 @@ export default function App() {
 
   const context = {
     user,
-    setUser
+    setUser,
+    loadUser
   }
 
   // if (loading) {
@@ -80,7 +82,9 @@ export default function App() {
 
   return (
     <appContext.Provider value={context}>
-      <NavBar current={currentPage} />
+      {!(['/sign-in','/register']).includes(location.pathname) && (
+        <NavBar current={currentPage} />
+      )}
       <main>
         <Routes>
           <Route path="/" element={<Home />} />

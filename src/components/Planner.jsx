@@ -10,7 +10,7 @@ export default function Planner(props) {
     const [datesInRange, setDatesInRange] = useState([]);
     const [toggled, setToggled] = useState(false);
 
-    const { user, setUser } = useContext(appContext)
+    const { user, setUser, loadUser } = useContext(appContext)
 
     const navigate = useNavigate()
 
@@ -37,6 +37,10 @@ export default function Planner(props) {
             setToggled(false);
         };
     }, [user]);
+
+    useEffect(() => {
+        loadUser();
+    }, [])
 
     useEffect(() => {
         if (!user.subscribed) navigate("/")

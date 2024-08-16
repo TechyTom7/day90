@@ -36,11 +36,9 @@
     bottom: 10%;
     height: 100%;
     padding-bottom: 150px;
+    width: 90%;
+    margin: 0 auto;
     /* overflow: scroll; */
-}
-
-@media screen and (max-height: 800px) {
-
 }
 
 #about-container h2 {
@@ -54,10 +52,11 @@
 
 #contents-container {
     position: fixed;
-    bottom: 0;
+    bottom: 20px;
     left: 50%;
     min-width: 400px;
     translate: -50% 0;
+    z-index: 1;
 }
 
 #table-of-contents {
