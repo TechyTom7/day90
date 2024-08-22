@@ -1,5 +1,5 @@
 import NavBar from "./NavBar";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import { appContext } from "../App";
 import consts from "../consts";
@@ -45,7 +45,7 @@ export default function Home(props) {
                     </section>
                 ) : (
                     <>
-                    <h3>Go to the about page to learn more</h3>
+                    <h3>Go to the <Link to='/about' style={{color: "#d2d2d2", fontWeight: '550'}}> about page </Link> to learn more </h3>
                     {(user.subscribed) ?
                         <h3>And happy planning!</h3>: null}
                     </>

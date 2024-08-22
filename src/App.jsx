@@ -20,6 +20,8 @@ import consts from './consts'
 import Profile from './components/Profile'
 import Loading from './components/Loading'
 import NavBar from './components/NavBar'
+import Support from './components/Support'
+import Admin from './components/Admin'
 
 export const appContext = createContext({
   user: {},
@@ -73,7 +75,8 @@ export default function App() {
   const context = {
     user,
     setUser,
-    loadUser
+    loadUser,
+
   }
 
   // if (loading) {
@@ -85,6 +88,7 @@ export default function App() {
       {!(['/sign-in','/register']).includes(location.pathname) && (
         <NavBar current={currentPage} />
       )}
+      <Support/>
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -95,6 +99,7 @@ export default function App() {
           <Route path="/sign-in" element={<SignIn />} />
           <Route path="/register" element={<Register />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/admin" element={<Admin />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

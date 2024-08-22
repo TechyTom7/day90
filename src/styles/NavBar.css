@@ -8,7 +8,7 @@
 }
 
 nav {
-    background-color: #718391;
+    background-color: var(--nav-bar-color);
     position: fixed;
     top: 0;
     left: 0;

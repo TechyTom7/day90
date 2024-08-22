@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { appContext } from "../App";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import NavBar from "./NavBar";
 import consts from "../consts";
 import '../styles/Planner.css';
@@ -41,10 +41,6 @@ export default function Planner(props) {
     useEffect(() => {
         loadUser();
     }, [])
-
-    useEffect(() => {
-        if (!user.subscribed) navigate("/")
-    })
 
     const toggleDate = async (year, month, day) => {
         try {
@@ -103,8 +99,18 @@ export default function Planner(props) {
         return <h1>Loading</h1>;
     }
 
+    if (!user.subscribed) {
+        return (
+            <div id="not-subscribed">
+                <h1>You are not subscribed right now</h1>
+                <h2>But that can change by <Link to='/payments'>subscribing!</Link></h2>
+            </div>
+        )
+    }
+
     return (
         <div id="planner-container">
+
             <div id="planner-body-container">
                 <h1>Planner</h1>
                 <span id="days-info">{(user.dates.length < 90) ?

@@ -1,0 +1,33 @@
+#admin-inner-container h2 {
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+#admin-inner-container form {
+    width: 90%;
+    margin: 0 auto;
+    background-color: #CCC;
+}
+
+#admin-inner-container form textarea {
+    display: block;
+    width: 90%;
+    margin: 10px auto;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+#admin-inner-container form input[type='submit'] {
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: #666;
+    color: white;
+    border: 1px solid white;
+    font-size: 1.3rem;
+    transition: all 0.3s ease-in-out;
+}
+
+#admin-inner-container form input[type='submit']:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+}

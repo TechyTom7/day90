@@ -88,3 +88,17 @@ html, body {
     transform: scale(1.1);
     cursor: pointer;
 }
+
+#not-subscribed {
+    width: 40%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+#not-subscribed a {
+    font-size: 1.2rem;
+    font-weight: 550;
+}

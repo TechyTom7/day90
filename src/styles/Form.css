@@ -33,7 +33,7 @@ form .email, .password, .confirm-password {
     outline: none;
 }
 
-input[type="text"], input[type="password"] {
+.form-container input[type="text"], input[type="password"] {
     width: 80%;
     padding: 10px 20px;
     margin-bottom: 10px;
@@ -45,20 +45,20 @@ input[type="text"], input[type="password"] {
     font-family: "Avenir Next", Arial, sans-serif; /* Ensure consistent font */
 }
 
-input[type="text"]::placeholder, input[type="password"]::placeholder {
+.form-container input[type="text"]::placeholder, .form-container input[type="password"]::placeholder {
     color: #c2c2c2;
 }
 
-input[type="text"]:hover, input[type="password"]:hover, input[type='submit']:hover {
+.form-container input[type="text"]:hover, .form-container input[type="password"]:hover, .form-container input[type='submit']:hover {
     border-color: rgb(255, 255, 255);
 }
 
-input[type='submit'] {
+.form-container input[type='submit'] {
     font-weight: 450;
     transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 
-input[type='submit']:hover {
+.form-container input[type='submit']:hover {
     transform: scale(1.05);
     cursor: pointer;
 }

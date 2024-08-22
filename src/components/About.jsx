@@ -62,6 +62,15 @@ export default function Home() {
                         for you! We will also continuously make improvements to the app as time passes. We hope you will find it
                         way easier to manage your stay in an EU country!
                     </p>
+                    <h2 id='support'>Support</h2>
+                    <p>
+                        At the bottom right of the screen, you will see a small button. If you click it, you will see a
+                        popup show. This is the support popup, and this is where you can search for help will popular questions
+                        asked by ordinary people just like you! If you don't see the result you were looking for, you can
+                        send an email to <i style={{fontWeight: 500}}>tom@day90.eu</i> and the team will get back to you
+                        within one business day. It all depends on how busy we are. We apologise if you get any delays regarding
+                        our slow response, but the team will try to get back to you as quickly as possible.
+                    </p>
                 </div>
             </div>
         </div>

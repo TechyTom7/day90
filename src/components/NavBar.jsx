@@ -33,13 +33,16 @@ export default function NavBar({ current }) {
                         <NavLink route='/about' active={current === "/about"}>About</NavLink>
                         <NavLink route='/payments' active={current === "/payments"}>Payments</NavLink>
 
-
-                        {user.subscribed ?
-                        <NavLink route='/planner' active={current === "/planner"}>Planner</NavLink>
-                        : null}
                         {user.email ?
-                        <NavLink route='/profile' active={current === "/profile"}>Profile</NavLink>:
+                        (<>
+                            <NavLink route='/planner' active={current === "/planner"}>Planner</NavLink>
+                            <NavLink route='/profile' active={current === "/profile"}>Profile</NavLink>
+                        </>):
                         null}
+
+                        {user.email == "tom@day90.eu" ?
+                        <NavLink route='/admin' active={current === "/admin"}>Admin Panel</NavLink>
+                        : null}
                     </div>
 
                     { !user.email ?

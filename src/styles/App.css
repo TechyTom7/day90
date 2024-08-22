@@ -6,7 +6,7 @@ main {
     padding-top: 50px;
 }
 
-#planner-container, #profile-container, #loading-container {
+#planner-container, #profile-container, #loading-container, #admin-container {
     position: fixed;
     left: 0;
     background-color: #d2d2d2;
@@ -15,12 +15,12 @@ main {
     overflow: scroll;
 }
 
-#planner-body-container, #profile-inner-container {
+#planner-body-container, #profile-inner-container, #admin-inner-container {
     width: 90%;
     margin: 100px auto 0;
 }
 
-#planner-body-container h1, #profile-inner-container h1{
+#planner-body-container h1, #profile-inner-container h1, #admin-container h1{
     font-size: 4rem;
 }
 

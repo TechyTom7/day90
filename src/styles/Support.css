@@ -1,0 +1,113 @@
+#support-container {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    z-index: 10;
+}
+
+#support-chat-container {
+    width: 250px;
+    position: relative;
+    bottom: 30px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border: 3px solid #666;
+    background-color: #999;
+    border-radius: 10px;
+    padding: 0;
+}
+
+#chat-info-container {
+    padding: 10px;
+    margin-top: 0;
+    text-align: center;
+    border-radius: 10px 10px 0 0;
+    border-bottom: 3px solid #666;
+    background-color: #AAA;
+}
+
+#chat-info-container h3 {
+    font-size: 0.9rem;
+    margin: 0
+}
+
+#support-chat-container #chats-container {
+    height: 200px;
+    overflow: scroll;
+    padding: 10px;
+
+}
+
+#support-chat-container #chats-container .question-container {
+    width: 100%;
+    background-color: #999;
+    border-radius: 10px;
+    border: 1px solid #666;
+    margin: 0 auto 10px;
+    background-color: #AAA;
+}
+
+#support-chat-container #chats-container .question-container h2 {
+    font-size: 0.8rem;
+    width: 100%;
+    padding: 10px;
+    margin: 0 auto;
+    font-weight: 500;
+}
+
+#support-chat-container #input-container {
+
+    border-top: 3px solid #666;
+
+    border-radius: 0 0 10px 10px;
+    background-color: #AAA;
+    padding: 10px 0;
+}
+
+
+#support-chat-container #input-container textarea {
+    height: 25px;
+    width: 90%;
+    padding: 5px;
+    position: relative;
+    resize: none;
+
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #DDD;
+    border: 1px solid #666;
+    margin-bottom: 5px;
+    border-radius: 10px;
+    color: black;
+}
+
+#support-btn {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    bottom: 40px;
+    right: 40px;
+    background-color: #999;
+    border-radius: 50%;
+    border: 3px solid #666;
+    transition: all 0.3s ease-in-out;
+
+    margin: 0 auto;
+}
+
+#support-btn:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+    background-color: #AAA;
+}
+
+#support-btn img {
+    width: 110%;
+    height: 70%;
+    position: relative;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
