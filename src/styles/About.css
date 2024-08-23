@@ -15,10 +15,18 @@
                             git merge doug
 */
 
+:root {
+    --contents-container-width: 300px;
+}
+
 #about-container {
     left: 0;
     background-color: #d2d2d2;
     width: 100%;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 50px;
+
 }
 
 #about-container h2, #about-container p {
@@ -33,10 +41,9 @@
 
 #about-info-container {
     position: relative;
-    bottom: 10%;
+    /* bottom: 10%; */
     height: 100%;
     padding-bottom: 150px;
-    width: 90%;
     margin: 0 auto;
     /* overflow: scroll; */
 }
@@ -51,16 +58,24 @@
 }
 
 #contents-container {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    min-width: 400px;
-    translate: -50% 0;
+    /* position: fixed;
+    bottom: 20px; */
+    /* left: 50%; */
+    min-width: var(--contents-container-width);
+    /* translate: -50% 0; */
     z-index: 1;
+    /* position: relative; */
 }
 
 #table-of-contents {
 
+    position: fixed;
+    top: 85%;
+    left: 2rem;
+    width: 80%;
+
+
+    transform: translate(-0%, -50%);
     background-color: grey;
     border-radius: 10px;
     border: 2px solid #666;
@@ -82,7 +97,7 @@
     color: white;
 }
 
-@media screen and (min-width: 680px) {
+@media screen and (min-width: 650px) {
 
     #about-container p {
         font-size: 1.1rem;
@@ -101,12 +116,13 @@
         font-weight: 400;
     }
 
+
     #table-of-contents {
-        width: 90%;
+        width: 200px;
         height: 30%;
-        top: 40%;
+        top: 55%;
         /* transform: translateX(-205%); */
-        position: relative;
+        position: fixed;
         display: flex;
         align-items: center;
         margin-left: 2%;
@@ -114,16 +130,21 @@
 
     #about-inner-container {
         display: grid;
-        grid-template-columns: 1fr 3fr;
+        grid-template-columns: var(--contents-container-width) 1fr;
+    }
+
+    #about-container {
+        padding-top: 75px;
     }
 
     #about-info-container {
         padding-bottom: 0;
     }
 
-    #contents-container {
-        position: static;
-        translate: 0% 0%;
-    }
+    /* #contents-container {
+        /* position: r;wiu
+        /* position: fixed;
+        /* translate: 0% 0%;
+    } */
 
 }

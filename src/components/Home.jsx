@@ -20,16 +20,16 @@ export default function Home(props) {
 
 
     useEffect(() => {
-        const starsContainer = document.getElementById("stars-container");
-        for (let i = 0; i < 10; ++i) {
-            const image = document.createElement("img");
-            image.src = "/images/eu-star.png";
-            image.className = "star";
+        // const starsContainer = document.getElementById("stars-container");
+        // for (let i = 0; i < 10; ++i) {
+        //     const image = document.createElement("img");
+        //     image.src = "/images/eu-star.png";
+        //     image.className = "star";
 
-            image.style.top = Math.floor(Math.random() * window.innerHeight) + "px";
-            image.style.left = Math.floor(Math.random() * window.innerWidth) + "px";
-            starsContainer.appendChild(image);
-        }
+        //     image.style.top = Math.floor(Math.random() * window.innerHeight) + "px";
+        //     image.style.left = Math.floor(Math.random() * window.innerWidth) + "px";
+        //     starsContainer.appendChild(image);
+        // }
     }, [])
 
     return (
@@ -52,7 +52,7 @@ export default function Home(props) {
                 )
                 }
             </div>
-            <div id='stars-container'></div>
+            {/* <div id='stars-container'></div> */}
         </div>
     )
 }
