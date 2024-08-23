@@ -135,10 +135,9 @@
 }
 
 #support-btn img {
-    position: relative;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    position: absolute;
+    top: 4px;
+    left: 4px;
 }
 
 
