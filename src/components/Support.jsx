@@ -120,7 +120,7 @@ export default function Support() {
                 : null}
 
                 <button id="support-btn" onClick={() => {setsupportShown(!supportShown)}}>
-                    <img src="/images/Support Logo.png"></img>
+                    <img src="/images/Support Logo.png" width="20px" height="30px"></img>
                 </button>
             </div>
         </>
