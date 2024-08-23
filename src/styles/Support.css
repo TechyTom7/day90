@@ -91,6 +91,7 @@
     position: relative;
     left: 44%;
     font-size: 1rem;
+    font-weight: 400;
 }
 
 .back-link:hover {
