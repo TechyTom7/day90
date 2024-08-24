@@ -52,7 +52,9 @@ export default function Home(props) {
                 )
                 }
             </div>
-            {/* <div id='stars-container'></div> */}
+            <div id='eu-flag-container' src="/images/Flag_of_Europe.svg" style={{
+                top: (!user.email) ? "200px" : "300px"
+            }}></div>
         </div>
     )
 }

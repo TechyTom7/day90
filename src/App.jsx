@@ -22,6 +22,8 @@ import Loading from './components/Loading'
 import NavBar from './components/NavBar'
 import Support from './components/Support'
 import Admin from './components/Admin'
+import Transaction from './components/Transaction';
+
 
 export const appContext = createContext({
   user: {},
@@ -85,7 +87,7 @@ export default function App() {
 
   return (
     <appContext.Provider value={context}>
-      {!(['/sign-in','/register']).includes(location.pathname) && (
+      {!(['/sign-in','/register', '/transaction']).includes(location.pathname) && (
         <NavBar current={currentPage} />
       )}
       <Support/>
@@ -100,6 +102,7 @@ export default function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/admin" element={<Admin />} />
+          <Route path="/transaction" element={<Transaction />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

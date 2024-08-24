@@ -4,10 +4,9 @@
     background-color: var(--home-bg-color);
     width: 100%;
     height: 100vh;
-    background-image: url('/images/Flag_of_Europe.svg');
+    /* background-image: url('/images/Flag_of_Europe.svg');
     background-position: center;
-    background-repeat: no-repeat;
-
+    background-repeat: no-repeat; */
 }
 
 #home-info-container {
@@ -104,6 +103,19 @@ h3 {
 
 } */
 
+#eu-flag-container {
+    position: absolute;
+    background-image: url('/images/Flag_of_Europe.svg');
+    background-color: rgba(0, 0, 0, 0);
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 250px;
+    height: 300px;
+    top: 200px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: -2;
+}
 
 .star {
     position: relative;
