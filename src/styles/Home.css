@@ -111,7 +111,7 @@ h3 {
     background-repeat: no-repeat;
     width: 250px;
     height: 300px;
-    top: 200px;
+    top: 120px;
     left: 50%;
     transform: translateX(-50%);
     z-index: -2;

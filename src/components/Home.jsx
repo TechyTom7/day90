@@ -39,6 +39,7 @@ export default function Home(props) {
                 <h2>Introducing the EU non residency planner!</h2>
                 {!user.email ? (
                     <section id='set-account-section'>
+                        <div id='eu-flag-container' src="/images/Flag_of_Europe.svg"></div>
                         <button className='sign-in-button' onClick={handleSignInClick}>Sign in</button>
                         <span>or</span>
                         <button className='register-button' onClick={handleRegisterClick}>Register</button>
@@ -48,13 +49,12 @@ export default function Home(props) {
                     <h3>Go to the <Link to='/about' style={{color: "#d2d2d2", fontWeight: '550'}}> about page </Link> to learn more </h3>
                     {(user.subscribed) ?
                         <h3>And happy planning!</h3>: null}
-                    </>
+
+                    <div id='eu-flag-container' src="/images/Flag_of_Europe.svg"></div></>
                 )
                 }
             </div>
-            <div id='eu-flag-container' src="/images/Flag_of_Europe.svg" style={{
-                top: (!user.email) ? "200px" : "300px"
-            }}></div>
+
         </div>
     )
 }
