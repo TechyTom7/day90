@@ -15,14 +15,12 @@ import NotFound from './components/NotFound'
 import SignIn from './components/SignIn'
 import Register from './components/Register'
 import Planner from './components/Planner'
-import Payments from './components/Payments'
 import consts from './consts'
 import Profile from './components/Profile'
 import Loading from './components/Loading'
 import NavBar from './components/NavBar'
 import Support from './components/Support'
 import Admin from './components/Admin'
-import Transaction from './components/Transaction';
 
 
 export const appContext = createContext({
@@ -95,9 +93,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/payment" element={<Payments />} />
           <Route path="/planner" element={<Planner />}/>
-          <Route path="/payments" element={<Payments/>}/>
           <Route path="/sign-in" element={<SignIn />} />
           <Route path="/register" element={<Register />} />
           <Route path="/profile" element={<Profile />} />

@@ -7,6 +7,9 @@ import consts from "../consts";
 function NavLink({ route, active, children }) {
     return (
         <div className="link-container">
+            {/* {route != "/payments" ?
+                <Link to={route} className={(active) ? "active-link" : "link"}>{children}</Link>
+            : <a href="https://day90.eu/subscribe" className={(active) ? "active-link" : "link"}>{children}</a>} */}
             <Link to={route} className={(active) ? "active-link" : "link"}>{children}</Link>
         </div>
     )
@@ -31,7 +34,7 @@ export default function NavBar({ current }) {
                     }}>
                         <NavLink route='/' active={current === "/"}>Home</NavLink>
                         <NavLink route='/about' active={current === "/about"}>About</NavLink>
-                        <NavLink route='/payments' active={current === "/payments"}>Payments</NavLink>
+                        <NavLink route='https://day90.eu/subscribe' active={current === "/payments"}>Payments</NavLink>
 
                         {user.email ?
                         (<>
