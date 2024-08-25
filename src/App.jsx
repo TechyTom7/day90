@@ -87,7 +87,7 @@ export default function App() {
 
   return (
     <appContext.Provider value={context}>
-      {!(['/sign-in','/register', '/subscribe']).includes(location.pathname) && (
+      {!(['/sign-in','/register']).includes(location.pathname) && (
         <NavBar current={currentPage} />
       )}
       <Support/>
@@ -102,7 +102,6 @@ export default function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/admin" element={<Admin />} />
-          <Route path="/subscribe" element={<Transaction />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

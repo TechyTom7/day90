@@ -13,7 +13,7 @@ export default function Payments(props) {
                 <div id="monthly-deal-container">
                     <h3>Get access to our EU planner</h3>
                     <p>For a <strong>low</strong> price of <strong>£9.99</strong> per month!</p>
-                    <button id="subscribe-button-1" onClick={() => {navigate("/subscribe"); window.location.reload()}}>
+                    <button id="subscribe-button-1" onClick={() => {window.location.href = "https://day90.eu/subscribe"; window.location.reload()}}>
                         Subscribe
                         <div className="gradient-2">
                             Subscribe
