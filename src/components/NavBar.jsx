@@ -26,7 +26,7 @@ export default function NavBar({ current }) {
                     margin: (user.email) ? "0 auto" : null,
                     justifyContent: (user.email) ? "center" : null
                 }}>
-                    {!user.email ? <div id='nav-filler'></div> : null}
+                    <img id='logo-container' src="images/Day90-Logo.png" width="200px" height="50px"></img>
 
                     <div id='links-container' style={{
                         width: (user.email) ? '80%' : null,

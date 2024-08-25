@@ -19,19 +19,21 @@ nav {
 #nav-inner-container {
     width: 95%;
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Default to column for mobile */
     justify-content: center;
     align-items: center;
     margin: 0 auto;
+    gap: 5px;
 }
 
 #links-container {
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-
-    gap: 10px;
+    gap: 15px;
+    width: 100%;
 }
 
 .link-container .link, .link-container .active-link {
@@ -40,7 +42,6 @@ nav {
     text-decoration-thickness: 1.5px;
     text-underline-offset: 2px;
     transition: color 0.5s ease-out, opacity 0.5s ease-out, text-underline-offset 0.5s ease-out, transform 0.5s ease-out;
-
     color: inherit;
 }
 
@@ -70,40 +71,32 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 200px;
+    width: 100%;
     gap: 10px;
-    margin-top: 10px;
+    margin-top: 15px;
 }
 
 #get-account-btns button {
     padding: 8px 15px;
-    /* padding: 3% 4.5%; */
     font-size: 1rem;
 }
 
-#nav-filler {
-    display: none;
-    width: 28%;
-}
-
+/* Desktop layout for larger screens (min-width: 650px) */
 @media screen and (min-width: 650px) {
     #nav-inner-container {
-        flex-direction: row;
+        flex-direction: row;  /* Row layout for larger screens */
         justify-content: space-between;
-        width: 100vw;
         align-items: center;
+        width: 90%;
         padding: 5px 0;
-        left: 0;
-        top: 0;
-    }
-
-    #nav-filler {
-        display: inline;
     }
 
     #links-container {
+        flex-direction: row;  /* Keep links in a row */
         justify-content: space-between;
-        width: 350px;
+        width: auto;
+        gap: 20;
+        flex-wrap: nowrap;
     }
 
     .link-container .link, .link-container .active-link {
@@ -111,20 +104,7 @@ nav {
     }
 
     #get-account-btns {
-        gap: 1%;
-        width: 28%;
+        width: auto;
         margin-top: 0;
-    }
-}
-
-@media screen and (max-width: 900px) and (min-width: 650px) {
-    .link-container .link, .link-container .active-link {
-        font-size: 1.2rem;
-
-    }
-
-    #links-container {
-        justify-content: center;
-        gap: 12%;
     }
 }
