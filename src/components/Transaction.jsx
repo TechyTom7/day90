@@ -5,6 +5,7 @@ export default function Transaction() {
 
     useEffect(() => {
         // Create a new script element
+
         const script = document.createElement('script');
         script.src = "//tinder.thrivecart.com/embed/v2/thrivecart.js";
         script.async = true;
