@@ -34,10 +34,11 @@ export default function NavBar({ current }) {
                     }}>
                         <NavLink route='/' active={current === "/"}>Home</NavLink>
                         <NavLink route='/about' active={current === "/about"}>About</NavLink>
-                        <NavLink route='https://day90.eu/subscribe' active={current === "/payments"}>Subscribe</NavLink>
+
 
                         {user.email ?
                         (<>
+                            <NavLink route='https://day90.eu/subscribe' active={current === "/payments"}>Subscribe</NavLink>
                             <NavLink route='/planner' active={current === "/planner"}>Planner</NavLink>
                             <NavLink route='/profile' active={current === "/profile"}>Profile</NavLink>
                         </>):
