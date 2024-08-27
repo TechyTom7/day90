@@ -103,7 +103,7 @@ export default function Planner(props) {
         return (
             <div id="not-subscribed">
                 <h1>You are not subscribed right now</h1>
-                <h2>But that can change by <Link to='/payments'>subscribing!</Link></h2>
+                <h2>But that can change by <Link to='https://day90.eu/subscribe'>subscribing!</Link></h2>
             </div>
         )
     }
