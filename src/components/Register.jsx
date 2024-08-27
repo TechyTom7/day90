@@ -33,7 +33,7 @@ export default function Register(props) {
         clearErrors();
 
         setRegistering(true);
-        const name = e.target.element.email.value;
+        const name = e.target.elements.name.value;
         if (name.length < 3) {
             addErrorMsg("Name must contain at least three characters");
             setRegistering(false);
