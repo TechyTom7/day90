@@ -33,8 +33,17 @@ export default function SignIn(props) {
         clearErrors();
         setLoadingSignIn(true);
 
+        const name = e.target.elements.name.value;
+
+        if (name.length < 3) {
+            addErrorMsg("Name must contain at least three characters");
+            setLoadingSignIn(false);
+            return;
+        }
+
         // Check if the email matches a regex expressions for email
         const email = e.target.elements.email.value;
+
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
             addErrorMsg("Please enter a valid email address");
@@ -42,19 +51,21 @@ export default function SignIn(props) {
             return;
         }
 
-        const existingEmailResponse = await fetch(consts.SERVER_URL + 'check_email', {
+
+        const existingUserResponse = await fetch(consts.SERVER_URL + 'check_user', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
                 email: email,
+                name: name
             }),
         });
 
-        const existingEmailResult = await existingEmailResponse.json();
-        if (!existingEmailResult.exists) {
-            addErrorMsg("Email doesn't exist");
+        const existingUserResult = await existingUserResponse.json();
+        if (!existingUserResult.exists) {
+            addErrorMsg("Email or name doesn't exist");
             setLoadingSignIn(false);
             return;
         }
@@ -78,6 +89,7 @@ export default function SignIn(props) {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
+                    name: name,
                     email: email,
                     password: password,
                 }),
@@ -108,6 +120,9 @@ export default function SignIn(props) {
                 <form method="post" onSubmit={handleSubmit}>
                     <Link id="back-link" to="/" className="form-link">Back</Link>
                     <h1>Sign in</h1>
+                    <div className="name">
+                        <input type="text" placeholder="Name" name="name"/>
+                    </div>
                     <div className="email">
                         <input type="text" placeholder="Email" name="email"/>
                     </div>
