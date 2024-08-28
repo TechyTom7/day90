@@ -82,6 +82,10 @@ nav {
     font-size: 1rem;
 }
 
+#logo-container:hover {
+    cursor: pointer;
+}
+
 /* Desktop layout for larger screens (min-width: 650px) */
 @media screen and (min-width: 650px) {
     #nav-inner-container {
