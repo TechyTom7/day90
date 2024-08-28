@@ -34,6 +34,7 @@ nav {
     flex-wrap: wrap;
     gap: 15px;
     width: 100%;
+    flex-grow: 1;
 }
 
 .link-container .link, .link-container .active-link {
@@ -93,9 +94,9 @@ nav {
 
     #links-container {
         flex-direction: row;  /* Keep links in a row */
-        justify-content: space-between;
+        justify-content: space-around;
         width: auto;
-        gap: 20;
+        gap: 20px;
         flex-wrap: nowrap;
     }
 

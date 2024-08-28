@@ -23,7 +23,7 @@ export default function NavBar({ current }) {
         <div id='nav-container'>
             <nav>
                 <div id='nav-inner-container' style={{
-                    margin: (user.email) ? "0 auto" : null,
+                    margin: (user.email == null) ? "0 auto" : null,
                     justifyContent: (user.email) ? "center" : null
                 }}>
                     <img id='logo-container' src="images/Day90-Logo.png" width="200px" height="50px"></img>

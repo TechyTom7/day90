@@ -37,13 +37,14 @@ export default function Home() {
                     </p>
                     <p>
                         Now what you'll see might be a bit menacing, however it's actually very simple! You will see
-                        a calendar with a 180 day range, 90 days before and after the current date. You will see the current date in a
-                        light red circle.
+                        a calendar with a 450 day range, however we will be focusing on the dates before the dark coloured
+                        ones. The light coloured days show the 360 day range. 180 days before and after the current date.
+                        You will see the current date in a light red circle.
                     </p>
                     <p>
                         Before we move on, we have to select the days we were in an EU country. To do that, simply click
-                        on the date you were in an EU country. The button to click is circular, and contains the day in the 180 day
-                        range calendar. For now the date has to be before or the current date of whenever you're using this tool.
+                        on the date you were in an EU country. The button to click is circular, and contains the day in the
+                        calendar. For now the date has to be before or the current date of whenever you're using this tool.
                     </p>
                     <p>
                         If you've selected a wrong date, simply click on that date again to remove that date. Also keep in
@@ -56,6 +57,10 @@ export default function Home() {
                         previous dates we have been in the EU country. According to the EU regulations, the amount of days
                         selected in our unique calendar should not exceed 90. It will automatically warn you that you can't
                         schedule more days, or that you have tried to schedule too many days.
+                    </p>
+                    <p>
+                        About the dark coloured dates now, they won't count to your amount of days left, however they're
+                        just there for extra planning for when the dates in that range will actually affect the current count.
                     </p>
                     <p>
                         With this basic guide, you should be able to master the skills of using the EU tool we have provided

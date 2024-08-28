@@ -12,6 +12,10 @@ html, body {
     margin-left: 20px;
 }
 
+#planner-container {
+    padding-bottom: 50px;
+}
+
 #dates-container {
     /* display: flex; */
     /* flex-wrap: wrap; */

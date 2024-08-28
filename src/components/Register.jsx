@@ -10,7 +10,7 @@ export default function Register(props) {
     const [registering, setRegistering] = useState(false)
     const navigate = useNavigate();
 
-    const {setUser} = useContext(appContext)
+    const {setUser, token, setToken} = useContext(appContext)
 
     const addErrorMsg = msg => {
         const errorContainer = document.getElementById("error-container");
@@ -105,9 +105,10 @@ export default function Register(props) {
             console.log(result)
             setUser(result.user);
 
-            if (rememberMe) {
-                localStorage.setItem('user-token', result.user.email)
-            }
+            //setToken(result.token)
+            // localStorage.setItem('user-token', result.token)
+            localStorage.setItem('user-token', result.user.email)
+
 
             navigate("/");
         } catch (error) {

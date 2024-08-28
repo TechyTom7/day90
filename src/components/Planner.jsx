@@ -9,6 +9,7 @@ import '../styles/Planner.css';
 export default function Planner(props) {
     const [datesInRange, setDatesInRange] = useState([]);
     const [toggled, setToggled] = useState(false);
+    const [availableDates, setAvailableDates] = useState(0);
 
     const { user, setUser, loadUser } = useContext(appContext)
 
@@ -20,14 +21,28 @@ export default function Planner(props) {
         let datesObject = {};
         let nowDate = new Date();
 
-        for (let amount = -90; amount < 91; ++amount) {
+        for (let amount = -180; amount < 271; ++amount) {
             let itDate = new Date(nowDate);
             itDate.setDate(nowDate.getDate() + amount);
-            if (!datesObject[itDate.getMonth()]) {
-                datesObject[itDate.getMonth()] = [];
-                datesObject[itDate.getMonth()].push(itDate.getFullYear());
+
+            // Get the year and month
+            const year = itDate.getFullYear();
+            const month = itDate.getMonth();
+
+            // Create a unique key for each year and month
+            const yearMonthKey = `${year}-${month}`;
+
+            // If the year-month doesn't exist in the datesObject, initialize it
+            if (!datesObject[yearMonthKey]) {
+                datesObject[yearMonthKey] = {
+                    year: year,
+                    month: month,
+                    days: []
+                };
             }
-            datesObject[itDate.getMonth()].push(itDate.getDate());
+
+            // Push the day into the correct year-month key
+            datesObject[yearMonthKey].days.push(itDate.getDate());
         }
 
         setDatesInRange(datesObject);
@@ -41,6 +56,49 @@ export default function Planner(props) {
     useEffect(() => {
         loadUser();
     }, [])
+
+    const isUserDate = (year, month, day) => {
+        return user.dates.some((userDateStr) => {
+            let formattedDate = userDateStr.split(' ');
+            let userYear = Number(formattedDate[3]);
+            let userMonth = consts.dateConversions.indexOf(formattedDate[2]);
+            let userDay = Number(formattedDate[1]);
+
+            return userYear === year && userMonth === month && userDay === day;
+        });
+    };
+
+    const isNow = (year, month, day) => {
+        let nowDate = new Date();
+        return year === nowDate.getFullYear() && month === nowDate.getMonth() && day === nowDate.getDate();
+    }
+
+    const dateOverlapping = (year, month, day) => {
+        let thresholdDate = new Date();
+        thresholdDate.setDate(thresholdDate.getDate() + 180);
+
+        // Create a date object for the input date
+        let inputDate = new Date(year, month, day);
+
+        // Check if the input date is beyond the threshold date
+        return inputDate > thresholdDate;
+    };
+
+    const calculateDaysLeft = () => {
+        if (!user.dates && user.dates.length === 0) return 90;
+
+        let counter = 90;
+        console.log("First, ", user.dates[0])
+        for (let i = 0; i < user.dates.length; ++i) {
+            console.log("Date:", user.dates[i])
+            if (!dateOverlapping(user.dates[i].split(' ')[3],
+                                 consts.dateConversions.indexOf(user.dates[i].split(' ')[2]),
+                                 user.dates[i].split(' ')[1])) {
+                --counter;
+            }
+        }
+        setAvailableDates(counter)
+    };
 
     const toggleDate = async (year, month, day) => {
         try {
@@ -68,32 +126,41 @@ export default function Planner(props) {
             let data = await response.json();
 
             setUser(data)
+            calculateDaysLeft();
             setToggled(true);
+
         } catch (e) {
-            if (e == 'User not authorized') {
+            if (e.message === 'User not authorized') {
                 navigate('/')
-            } else if (e == "User not subscribed") {
+            } else if (e.message === "User not subscribed") {
                 navigate('/payments')
             }
             console.log("Something went wrong toggling the date: ", e);
         }
+
     };
 
-    const isUserDate = (year, month, day) => {
-        return user.dates.some((userDateStr) => {
-            let formattedDate = userDateStr.split(' ');
-            let userYear = Number(formattedDate[3]);
-            let userMonth = consts.dateConversions.indexOf(formattedDate[2]);
-            let userDay = Number(formattedDate[1]);
+    useEffect(() => {
+        if (user.dates) {
+            const calculateDaysLeft = () => {
+                if (!user.dates && user.dates.length === 0) return 90;
 
-            return userYear === year && userMonth === month && userDay === day;
-        });
-    };
+                let counter = 90;
+                console.log("First, ", user.dates[0])
+                for (let i = 0; i < user.dates.length; ++i) {
+                    console.log("Date:", user.dates[i])
+                    if (!dateOverlapping(user.dates[i].split(' ')[3],
+                                        consts.dateConversions.indexOf(user.dates[i].split(' ')[2]),
+                                        user.dates[i].split(' ')[1])) {
+                        --counter;
+                    }
+                }
+                return counter;
+            };
 
-    const isNow = (year, month, day) => {
-        let nowDate = new Date();
-        return year === nowDate.getFullYear() && month === nowDate.getMonth() && day === nowDate.getDate();
-    }
+            setAvailableDates(calculateDaysLeft());
+        }
+    }, [user.dates]);
 
     if (!user.dates) {
         return <h1>Loading</h1>;
@@ -110,36 +177,44 @@ export default function Planner(props) {
 
     return (
         <div id="planner-container">
+            {console.log(user.dates)}
 
             <div id="planner-body-container">
                 <h1>Planner</h1>
-                <span id="days-info">{(user.dates.length < 90) ?
-                "You have " + (90 - user.dates.length) + " days available to plan!":
+                <span id="days-info">{(availableDates > 0) ?
+                "You have " + (availableDates) + " days available to plan! (After you've inputted your dates before today)":
 
-                (user.dates.length === 90) ? // Check if the user planned 90 days if they don't have less than 90 days
+                (availableDates === 0) ?
                 "You've used up all of your days for planning!":
-                "You have " + (user.dates.length - 90) + " too many days. Try rescheduling some dates for more flexibility."
+                "You have " + (availableDates * -1) + " too many days. Try rescheduling some dates for more flexibility."
             }</span>
                 <div id="dates-container">
                     {datesInRange &&
-                        Object.entries(datesInRange).map(([month, value]) => (
-                            <div key={month} className="month-container">
+                        Object.entries(datesInRange).map(([yearMonth, value]) => (
+                            <div key={yearMonth} className="month-container">
                                 <h2>
-                                    {value[0]} {consts.Dates[month]}
+                                    {value.year} {consts.Dates[value.month]}
                                 </h2>
                                 <div className="month-days-container">
-                                    {value.slice(1).map((day, i) => (
+                                    {value.days.map((day, i) => (
                                         <button
-                                            key={i}
-                                            onClick={() => toggleDate(value[0], parseInt(month), day)}
-                                            style={{
-                                                backgroundColor: isUserDate(value[0], parseInt(month), day)
-                                                    ? (isNow(value[0], parseInt(month), day) ? "lightgreen" : "#87b582")
-                                                    : (isNow(value[0], parseInt(month), day) ? "#d9a5a5" : "#888"),
-                                            }}
-                                        >
-                                            {day}
-                                        </button>
+                                        key={i}
+                                        onClick={() => toggleDate(value.year, value.month, day)}
+                                        style={{
+                                            backgroundColor: (() => {
+                                                if (dateOverlapping(value.year, value.month, day)) {
+                                                    return isUserDate(value.year, value.month, day) ?
+                                                        "#637d5f" : "#696969";
+                                                } else {
+                                                    return isUserDate(value.year, value.month, day)
+                                                        ? (isNow(value.year, value.month, day) ? "lightgreen" : "#87b582")
+                                                        : (isNow(value.year, value.month, day) ? "#d9a5a5" : "#888");
+                                                }
+                                            })()
+                                        }}
+                                    >
+                                        {day}
+                                    </button>
                                     ))}
                                 </div>
                             </div>

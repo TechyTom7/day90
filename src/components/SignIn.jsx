@@ -8,7 +8,7 @@ export default function SignIn(props) {
 
     const { setUser } = useContext(appContext)
 
-    const [data, setData] = useState(null);
+    const [data, setData, setToken] = useState(null);
     const [loadingSignIn, setLoadingSignIn] = useState(false)
     const navigate = useNavigate();
 
@@ -88,7 +88,11 @@ export default function SignIn(props) {
             if (response.ok) {
                 const result = await response.json();
                 setUser(result.user);
+                //setToken(result.token);
+
                 if (rememberMe) {
+                    // Get encrypted token
+                    //localStorage.setItem('user-token', result.token)
                     localStorage.setItem('user-token', result.user.email)
                 }
                 console.log(result);

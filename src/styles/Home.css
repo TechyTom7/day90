@@ -4,9 +4,9 @@
     background-color: var(--home-bg-color);
     width: 100%;
     height: 100vh;
-    background-image: url('/images/Flag_of_Europe1.svg');
-    background-position: center;
-    background-repeat: no-repeat;
+    /* background-image: url('/images/Flag_of_Europe1.svg');
+    background-position: center 0px;
+    background-repeat: no-repeat; */
 }
 
 #home-info-container {
@@ -71,11 +71,16 @@ h3 {
 }
 
 #set-account-section {
+    position: relative;
     display: flex;
     width: 300px;
     margin: 50px auto;
     flex-direction: column;
     justify-content: center;
+    /* background-image: url('/images/Flag_of_Europe1.svg');
+    background-size: 200%;
+    background-position: center center;
+    background-repeat: no-repeat; */
 }
 
 #set-account-section button {
@@ -105,13 +110,22 @@ h3 {
 
 #eu-flag-container {
     position: absolute;
-    background-image: url('/images/Flag_of_Europe1.svg');
+    /* background-image: url('/images/Flag_of_Europe1.svg');
     background-color: rgba(0, 0, 0, 0);
     background-position: center;
-    background-repeat: no-repeat;
-    width: 250px;
-    height: 300px;
-    top: 120px;
+    background-repeat: no-repeat; */
+    width: 900px;
+    /* height: 300px; */
+    top: -235px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: -2;
+}
+
+#eu-flag-container-logged-in {
+    position: absolute;
+    width: 600px;
+    top: 200px;
     left: 50%;
     transform: translateX(-50%);
     z-index: -2;
@@ -147,5 +161,8 @@ h3 {
         font-size: 1.3rem;
     }
 
-
+    #eu-flag-container {
+        width: 1100px;
+        top: -300px;
+    }
 }

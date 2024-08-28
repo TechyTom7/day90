@@ -26,11 +26,14 @@ import Admin from './components/Admin'
 export const appContext = createContext({
   user: {},
   setUser: () => {},
-  loadUser: async () => {}
+  loadUser: async () => {},
+  token: {},
+  setToken: () => {}
 })
 
 export default function App() {
   const [user, setUser] = useState({});
+  const [token, setToken] = useState({})
   const [loading, setLoading] = useState(false)
   const [currentPage, setCurrentPage] = useState("")
   const location = useLocation()
@@ -76,6 +79,8 @@ export default function App() {
     user,
     setUser,
     loadUser,
+    token,
+    setToken
 
   }
 

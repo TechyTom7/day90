@@ -1,6 +1,15 @@
-* {
+@font-face {
     font-family: "Avenir Next";
+    src: url("/fonts/Avenir_Next.ttf");
+}
+
+* {
+    font-family: "Helvetica", sans-serif;
     box-sizing: border-box;
+}
+
+html, body {
+    min-width: 320px;
 }
 
 main {
