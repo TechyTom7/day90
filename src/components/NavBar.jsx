@@ -26,7 +26,7 @@ export default function NavBar({ current }) {
                     margin: (user.email == null) ? "0 auto" : null,
                     justifyContent: (user.email) ? "center" : null
                 }}>
-                    <img id='logo-container' src="images/Day90-Logo.png" width="200px" height="50px"></img>
+                    <img id='logo-container' src="images/Day90-Logo.png" width="200px" height="50px" onClick={() => {navigate('/')}}></img>
 
                     <div id='links-container' style={{
                         width: (user.email) ? '80%' : null,
