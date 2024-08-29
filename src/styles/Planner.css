@@ -30,6 +30,9 @@ html, body {
 
     width: 95%;
     background-color: #989898;
+    height: 50vh;
+    overflow: scroll;
+
     margin: 30px auto 50px;
     border-radius: 10px;
     padding: 10px;

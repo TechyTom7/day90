@@ -38,7 +38,8 @@ export default function Home() {
                     <p>
                         Now what you'll see might be a bit menacing, however it's actually very simple! You will see
                         a calendar with a 360 day range. The days show the 360 day range. 180 days before and after the
-                        current date. You will see the current date in a light red circle.
+                        current date. You will see the current date in a light red circle. To see the rest of the dates,
+                        scroll down on the calendar.
                     </p>
                     <p>
                         Before we move on, we have to select the days we were in an EU country. To do that, simply click
