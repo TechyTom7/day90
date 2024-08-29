@@ -37,9 +37,8 @@ export default function Home() {
                     </p>
                     <p>
                         Now what you'll see might be a bit menacing, however it's actually very simple! You will see
-                        a calendar with a 450 day range, however we will be focusing on the dates before the dark coloured
-                        ones. The light coloured days show the 360 day range. 180 days before and after the current date.
-                        You will see the current date in a light red circle.
+                        a calendar with a 360 day range. The days show the 360 day range. 180 days before and after the
+                        current date. You will see the current date in a light red circle.
                     </p>
                     <p>
                         Before we move on, we have to select the days we were in an EU country. To do that, simply click
@@ -59,8 +58,10 @@ export default function Home() {
                         schedule more days, or that you have tried to schedule too many days.
                     </p>
                     <p>
-                        About the dark coloured dates now, they won't count to your amount of days left, however they're
-                        just there for extra planning for when the dates in that range will actually affect the current count.
+                        But what if you wanted to plan further ahead? Simply click the right arrow button above the calendar
+                        on the right, and you will see a calendar with an extra 360 days to plan ahead. You will also see
+                        a small text popup that will tell you how many days you have planned ahead. To go back to the
+                        original calendar, simply click the left arrow button above the calendar.
                     </p>
                     <p>
                         With this basic guide, you should be able to master the skills of using the EU tool we have provided

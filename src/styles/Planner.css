@@ -16,6 +16,10 @@ html, body {
     padding-bottom: 50px;
 }
 
+#days-info {
+    margin-bottom: 20px;
+}
+
 #dates-container {
     /* display: flex; */
     /* flex-wrap: wrap; */
@@ -26,20 +30,61 @@ html, body {
 
     width: 95%;
     background-color: #989898;
-    margin: 50px auto;
+    margin: 30px auto 50px;
     border-radius: 10px;
     padding: 10px;
+}
+
+#planner-body-container #next-btn, #prev-btn {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    font-size: 1rem;
+    background-color: #AAA;
+    border-radius: 50%;
+    border: 1px solid #777;
+    transition: all 0.3s ease-in-out;
+}
+
+#planner-body-container #next-btn:hover, #prev-btn:hover {
+    transform: scale(1.2);
+    background-color: #BBB;
+    cursor: pointer;
+}
+
+#planner-body-container #next-btn {
+    right: 30px;
+}
+
+#planner-body-container #prev-btn {
+    left: 30px;
 }
 
 @media screen and (min-width: 600px) {
     #dates-container {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    #planner-body-container #next-btn {
+        right: 50px;
+    }
+
+    #planner-body-container #prev-btn {
+        left: 50px;
+    }
 }
 
 @media screen and (min-width: 1000px) {
     #dates-container {
         grid-template-columns: repeat(3, 1fr);
+    }
+
+    #planner-body-container #next-btn {
+        right: 70px;
+    }
+
+    #planner-body-container #prev-btn {
+        left: 70px;
     }
 }
 
