@@ -47,6 +47,7 @@ html, body {
     border-radius: 50%;
     border: 1px solid #777;
     transition: all 0.3s ease-in-out;
+    color: black;
 }
 
 #planner-body-container #next-btn:hover, #prev-btn:hover {
