@@ -11,6 +11,7 @@ export default function Planner(props) {
     const [datesOutOfRange, setDatesOutOfRange] = useState([]) // Contains the 360 extra days beyond 180 days from now
     const [availableDates, setAvailableDates] = useState(0); // Amount of days left to schedule
     const [atCurrDates, setAtCurrDates] = useState(true); // Determines whether the user sees the days within the 360 day range or not
+    const [popupShown, setPopupShown] = useState(false);
 
     const { user, setUser, loadUser } = useContext(appContext)
 
@@ -53,7 +54,6 @@ export default function Planner(props) {
         setDatesInRange(getDaysInInputRange(-180, 181));
         setDatesOutOfRange(getDaysInInputRange(181, 542));
 
-        console.log("Completed");
     }, [user]);
 
     useEffect(() => {
@@ -134,9 +134,7 @@ export default function Planner(props) {
                 if (!user.dates && user.dates.length === 0) return 90;
 
                 let counter = 90;
-                console.log("First, ", user.dates[0])
                 for (let i = 0; i < user.dates.length; ++i) {
-                    console.log("Date:", user.dates[i])
                     if (!isDateOutOfRange(user.dates[i].split(' ')[3],
                                         consts.dateConversions.indexOf(user.dates[i].split(' ')[2]),
                                         user.dates[i].split(' ')[1])) {
@@ -164,7 +162,6 @@ export default function Planner(props) {
     }
 
     const outOfRangeDatesCount = user.dates.reduce((count, dateStr) => {
-        console.log(dateStr);
         let year = dateStr.split(' ')[3];
         let monthStr = dateStr.split(' ')[2]
         let day = dateStr.split(' ')[1]
@@ -178,32 +175,80 @@ export default function Planner(props) {
         return count;
     }, 0);
 
+    const popup = (
+        <div id="popup-container">
+            <div id="popup">
+                <h2>Are you sure you want to delete ALL the dates? This cannot be undone!</h2>
+                <div id='buttons-container'>
+                    <button onClick={() => {
+                        const deleteDates = async () => {
+                            try {
+                                let response = await fetch(consts.SERVER_URL + "clear_dates", {
+                                    method: "DELETE",
+                                    headers: {
+                                        "x-token": user.email
+                                    }
+                                });
+
+                                if (!response.ok) {
+                                    let json = await response.json();
+                                    let errorMsg = json.error
+                                    throw new Error(errorMsg);
+                                }
+
+                                let data = await response.json();
+
+                                setUser(data)
+                                calculateDaysLeft();
+
+                            } catch (e) {
+                                if (e.message === 'User not authorized') {
+                                    navigate('/')
+                                } else if (e.message === "User not subscribed") {
+                                    navigate('https://day90.eu/subscribe')
+                                }
+                                console.log("Something went wrong toggling the date: ", e);
+                            }
+                        }
+                        deleteDates();
+                        setPopupShown(false);
+                    }}>Yes</button>
+                    <button onClick={() => setPopupShown(false)}>No</button>
+                </div>
+            </div>
+        </div>
+    )
+
+
 
     return (
         <div id="planner-container">
-            {console.log(user.dates)}
 
             <div id="planner-body-container">
-                <h1>Planner</h1>
-                <span id="days-info">{(availableDates > 0) ?
-                "You have " + (availableDates) + " days available to plan! (After you've inputted your dates before today)":
+                <div style={{display: "flex", justifyContent: "space-between", alignItems: "center", width: "90vw"}}>
+                    <h1>Planner</h1>
+                    <button className="toggle-popup-button"
+                            onClick={() => {setPopupShown(true)}}
+                            style={{height: "60px"}}
+                            >Clear dates</button>
+                </div>
+                <span className="days-info">If you are creating a new schedule, input the dates you have been to an EU country</span>
+                {atCurrDates ?
+                <span className="days-info">{(availableDates > 0) ?
+                "You have " + (availableDates) + ` day${availableDates != 1 ? "s" : ""} available to plan! (After you've inputted your dates before today)`:
 
                 (availableDates === 0) ?
                 "You've used up all of your days for planning!":
                 "You have " + (availableDates * -1) + " too many days. Try rescheduling some dates for more flexibility."
-            }</span>
+            }   </span>:
+                <span>You have planned {outOfRangeDatesCount} day{outOfRangeDatesCount != 1 ? "s" : ""} ahead</span>
+                }
                 {(atCurrDates) ?
                     <div id='next-section'>
-                        <span style={{fontSize: "1rem", position: "relative", top: "6px", right: "20px", marginBottom: "0px"}}>
-
-                        </span>
                         <button id="next-btn" onClick={() => {setAtCurrDates(false)}}>{">"}</button>
                     </div>:
                     <div id='prev-section'>
                         <button id="prev-btn" onClick={() => {setAtCurrDates(true)}}>{"<"}</button>
-                        <span style={{fontSize: "1rem", position: "relative", top: "6px", left: "20px", marginBottom: "0px"}}>
-                            Days planned ahead: {outOfRangeDatesCount}
-                        </span>
                     </div>
                 }
                 <div id="dates-container">
@@ -264,6 +309,7 @@ export default function Planner(props) {
 
                 </div>
             </div>
+            {popupShown ? popup : null}
         </div>
     );
 }

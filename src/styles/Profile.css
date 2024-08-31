@@ -20,24 +20,23 @@
     text-align: right;
 }
 
-#toggle-popup-button {
+.toggle-popup-button {
     background-color: #ad7373;
     border-radius: 10px;
     border: 1px solid #454545;
     color: white;
     padding: 10px;
     width: 100px;
-    margin: 10px auto;
     font-size: 1.1rem;
     transition: transform 0.3s ease-in-out;
 }
 
-#toggle-popup-button:hover {
+.toggle-popup-button:hover {
     transform: scale(1.1);
     cursor: pointer;
 }
 
-#signOutPopup-container {
+#popup-container {
     position: fixed;
     top: 0;
     left: 0;
@@ -49,21 +48,26 @@
     align-items: center;
 }
 
-#signOutPopup {
+#popup {
     background-color: #454545;
     padding-bottom: 20px;
     border-radius: 15px;
     color: white;
 }
 
-#signOutPopup #buttons-container {
+#popup h2 {
+    text-align: center;
+    max-width: 500px;
+}
+
+#popup #buttons-container {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 30px;
 }
 
-#signOutPopup #buttons-container button {
+#popup #buttons-container button {
     padding: 5px 15px;
     color: white;
     border: 1px solid #FFF;
@@ -72,16 +76,16 @@
     transition: transform 0.3s ease-in-out;
 }
 
-#signOutPopup #buttons-container button:hover {
+#popup #buttons-container button:hover {
     cursor: pointer;
     transform: scale(1.1);
 }
 
-#signOutPopup #buttons-container button:last-child {
+#popup #buttons-container button:last-child {
     background-color: #ad7373;
 }
 
-#signOutPopup #buttons-container button:first-child {
+#popup #buttons-container button:first-child {
     background-color: #939393;
 }
 

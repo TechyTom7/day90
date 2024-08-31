@@ -12,14 +12,14 @@ export default function Profile(props) {
     const navigate = useNavigate()
 
     const signOutPopup = (
-        <div id="signOutPopup-container">
-            <div id="signOutPopup">
+        <div id="popup-container">
+            <div id="popup">
                 <h2>Are you sure you want to sign out?</h2>
                 <div id='buttons-container'>
                     <button onClick={() => {
                         localStorage.removeItem('user-token');
                         setUser({});
-                        navigate('/');
+                        navigate('https://day90.eu/subscribe');
                     }}>Yes</button>
                     <button onClick={() => setPopupShowed(false)}>No</button>
                 </div>
@@ -52,7 +52,9 @@ export default function Profile(props) {
                         }
                     </tbody>
                 </table>
-                <button onClick={() => {setPopupShowed(true)}} id="toggle-popup-button">Sign out</button>
+                <button onClick={() => {setPopupShowed(true)}}
+                        className="toggle-popup-button"
+                        style={{margin: "10px auto"}}>Sign out</button>
             </div>
             {popupShowed && signOutPopup}
         </div>
