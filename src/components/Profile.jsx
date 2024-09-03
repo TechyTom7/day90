@@ -19,7 +19,7 @@ export default function Profile(props) {
                     <button onClick={() => {
                         localStorage.removeItem('user-token');
                         setUser({});
-                        navigate('https://day90.eu/subscribe');
+                        navigate('/');
                     }}>Yes</button>
                     <button onClick={() => setPopupShowed(false)}>No</button>
                 </div>
