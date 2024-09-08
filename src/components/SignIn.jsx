@@ -6,9 +6,9 @@ import Loading from "./Loading";
 
 export default function SignIn(props) {
 
-    const { setUser } = useContext(appContext)
+    const { setUser, setToken } = useContext(appContext)
 
-    const [data, setData, setToken] = useState(null);
+    const [data] = useState(null);
     const [loadingSignIn, setLoadingSignIn] = useState(false)
     const navigate = useNavigate();
 
@@ -87,13 +87,16 @@ export default function SignIn(props) {
 
             if (response.ok) {
                 const result = await response.json();
+
                 setUser(result.user);
-                //setToken(result.token);
+                setToken(result.token);
 
                 if (rememberMe) {
                     // Get encrypted token
-                    //localStorage.setItem('user-token', result.token)
-                    localStorage.setItem('user-token', result.user.email)
+                    localStorage.setItem('user-token', result.token)
+                    //localStorage.setItem('user-token', result.user.email)
+                } else {
+                    sessionStorage.setItem('temp-user-token', result.token)
                 }
                 console.log(result);
                 navigate("/");

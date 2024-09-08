@@ -18,6 +18,7 @@ export default function Profile(props) {
                 <div id='buttons-container'>
                     <button onClick={() => {
                         localStorage.removeItem('user-token');
+                        sessionStorage.removeItem('temp-user-token')
                         setUser({});
                         navigate('/');
                     }}>Yes</button>

@@ -13,7 +13,7 @@ export default function Planner(props) {
     const [atCurrDates, setAtCurrDates] = useState(true); // Determines whether the user sees the days within the 360 day range or not
     const [popupShown, setPopupShown] = useState(false);
 
-    const { user, setUser, loadUser } = useContext(appContext)
+    const { user, setUser, loadUser, getToken } = useContext(appContext)
 
     const navigate = useNavigate()
 
@@ -95,7 +95,7 @@ export default function Planner(props) {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
-                    "x-token": user.email
+                    "x-token": getToken()
                 },
 
                 body: JSON.stringify({
@@ -186,7 +186,7 @@ export default function Planner(props) {
                                 let response = await fetch(consts.SERVER_URL + "clear_dates", {
                                     method: "DELETE",
                                     headers: {
-                                        "x-token": user.email
+                                        "x-token": getToken()
                                     }
                                 });
 

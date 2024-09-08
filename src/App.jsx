@@ -28,8 +28,13 @@ export const appContext = createContext({
   setUser: () => {},
   loadUser: async () => {},
   token: {},
-  setToken: () => {}
+  setToken: () => {},
+  getToken: () => {}
 })
+
+const getToken = () => {
+  return localStorage.getItem('user-token') || sessionStorage.getItem('temp-user-token')
+}
 
 export default function App() {
   const [user, setUser] = useState({});
@@ -44,17 +49,18 @@ export default function App() {
       let response = await fetch(consts.SERVER_URL + "get_user", {
           credentials: "include",
           headers: {
-            "x-token": localStorage.getItem('user-token')
+            "x-token": getToken()
           }
       })
 
-      let jsonified = await response.json()
+
+      let user = await response.json()
       if (!response.ok) {
-          console.log(jsonified.error)
+          console.log(user.error)
 
       } else {
-          console.log("Got user:", jsonified)
-          setUser(jsonified)
+          console.log("Got user:", user)
+          setUser(user)
       }
     } catch (e){
         throw new Error("Something went wrong retrieving the data: ", e)
@@ -80,8 +86,8 @@ export default function App() {
     setUser,
     loadUser,
     token,
-    setToken
-
+    setToken,
+    getToken
   }
 
   // if (loading) {
