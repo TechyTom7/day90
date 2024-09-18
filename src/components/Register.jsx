@@ -48,26 +48,23 @@ export default function Register(props) {
             setRegistering(false);
             return;
         }
+        // const existingUserResponse = await fetch(consts.SERVER_URL + 'check_user', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //     },
+        //     body: JSON.stringify({
+        //         name: name,
+        //         email: email,
+        //     }),
+        // });
 
-
-
-        const existingUserResponse = await fetch(consts.SERVER_URL + 'check_user', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                name: name,
-                email: email,
-            }),
-        });
-
-        const existingUserResult = await existingUserResponse.json();
-        if (existingUserResult.exists) {
-            addErrorMsg("Email and name already exists");
-            setRegistering(false);
-            return;
-        }
+        // const existingUserResult = await existingUserResponse.json();
+        // if (existingUserResult.exists) {
+        //     addErrorMsg("Email and name already exists");
+        //     setRegistering(false);
+        //     return;
+        // }
 
         const password = e.target.elements.password.value;
         const confirmPassword = e.target.elements.confirm_password.value;
@@ -101,16 +98,29 @@ export default function Register(props) {
                     password: password,
                 }),
             });
-            const result = await response.json();
-            console.log(result)
-            setUser(result.user);
+            if (response.ok) {
+                const result = await response.json();
 
-            //setToken(result.token)
-            // localStorage.setItem('user-token', result.token)
-            localStorage.setItem('user-token', result.user.email)
+                setUser(result.user);
+                setToken(result.token);
 
+                if (rememberMe) {
+                    // Get encrypted token
+                    localStorage.setItem('user-token', result.token)
+                    //localStorage.setItem('user-token', result.user.email)
+                } else {
+                    sessionStorage.setItem('temp-user-token', result.token)
+                }
+                console.log(result);
+                navigate("/");
 
-            navigate("/");
+                //setToken(result.token)
+                // localStorage.setItem('user-token', result.token)
+                //localStorage.setItem('user-token', result.user.email)
+            } else {
+                const errorContainer = await response.json();
+                addErrorMsg(errorContainer.error);
+            }
         } catch (error) {
             console.error('Error:', error);
         }

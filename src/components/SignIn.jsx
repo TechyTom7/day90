@@ -44,22 +44,22 @@ export default function SignIn(props) {
         }
 
 
-        const existingUserResponse = await fetch(consts.SERVER_URL + 'check_user', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                email: email
-            }),
-        });
+        // const existingUserResponse = await fetch(consts.SERVER_URL + 'check_user', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //     },
+        //     body: JSON.stringify({
+        //         email: email
+        //     }),
+        // });
 
-        const existingUserResult = await existingUserResponse.json();
-        if (!existingUserResult.exists) {
-            addErrorMsg("Email or name doesn't exist");
-            setLoadingSignIn(false);
-            return;
-        }
+        // const existingUserResult = await existingUserResponse.json();
+        // if (!existingUserResult.exists) {
+        //     addErrorMsg("Email or name doesn't exist");
+        //     setLoadingSignIn(false);
+        //     return;
+        // }
 
         const password = e.target.elements.password.value;
 
@@ -101,7 +101,8 @@ export default function SignIn(props) {
                 console.log(result);
                 navigate("/");
             } else {
-                addErrorMsg("Invalid password")
+                //const errorContainer = await response.json()
+                addErrorMsg("Invalid credentials");
             }
         } catch (error) {
             console.error('Error:', error);
