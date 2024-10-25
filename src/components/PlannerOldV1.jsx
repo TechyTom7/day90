@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext, act } from "react";
+import { useState, useEffect, useContext } from "react";
 import { appContext } from "../App";
 import { useNavigate, Link } from "react-router-dom";
 import Loading from "./Loading";
@@ -11,16 +11,6 @@ class SelectionState {
     static oneSelected = 1;
     static twoSelected = 2;
     static userSelected = 3;
-}
-
-class TripDaysLeft {
-    constructor(startingAmount) {
-        this.startingAmount = startingAmount;
-        this.endingAmount = null;
-        this.tripLength = 0;
-        this.daysAhead = 0;
-    }
-
 }
 
 export default function Planner(props) {
@@ -144,7 +134,6 @@ export default function Planner(props) {
         return year === nowDate.getFullYear() && month === nowDate.getMonth() && day === nowDate.getDate();
     }
 
-    // Creates a date object according to year, month, and day
     const setDate = (newYear, newMonth, newDay) => {
         let date = new Date();
         date.setFullYear(newYear);
@@ -262,19 +251,7 @@ export default function Planner(props) {
                     break;
 
                 case SelectionState.oneSelected:
-                    let dateInBetween = false;
-                    let itDate = setDate(state1Date[0], state1Date[1], state1Date[2]);
-                    let endDate = setDate(year, month, day);
-
-                    while (itDate <= endDate) {
-                        if (isUserDate(itDate.getFullYear(), itDate.getMonth(), itDate.getDate())) {
-                            dateInBetween = true;
-                            break;
-                        }
-                        itDate.setDate(itDate.getDate() + 1);
-                    }
-
-                    if (setDate(year, month, day) < setDate(state1Date[0], state1Date[1], state1Date[2]) || dateInBetween) {
+                    if (setDate(year, month, day) < setDate(state1Date[0], state1Date[1], state1Date[2])) {
                         setState1Date([year, month, day]);
                     } else {
                         setSelectionState(SelectionState.twoSelected);
@@ -508,93 +485,96 @@ export default function Planner(props) {
 
     let availableDatesTracker = 90;
     let hadFirstDay = false;
+    let streakNotInCountry = 0;
     let state1DateEncountered = false;
     let state2DateEncountered = false;
-    let afterState2DateEncountered = false;
 
-    let daysTracker = 90;
-    let daysAllowed = daysTracker;
-    let daysLeftDisplay = daysAllowed;
+    let daysAllowed = 90;
+    let daysWithin180 = 0;
+    let daysTracker = daysAllowed - daysWithin180
 
-    let activeTrips = [];
-    let inATrip = false;
+    const oldcalculate = (year, month, day) => {
 
-    const calculate = (year, month, day) => {
-
-        if (!inATrip && !state1DateEncountered) {
-            for (let i = 0; i < activeTrips.length; ++i) {
-                let trip = activeTrips[i];
-                ++trip.daysAhead;
-                if (trip.daysAhead == 90) {
-                    daysAllowed += trip.tripLength;
-                    activeTrips.splice(i, i);
-                }
-            }
+        if (state2DateEncountered) {
+            --availableDatesTracker;
+            state2DateEncountered = false;
         }
 
         if (state1Date[0] == year && state1Date[1] == month && state1Date[2] == day) {
-            state1DateEncountered = !state1DateEncountered;
-            inATrip = true;
-            activeTrips.push(new TripDaysLeft(daysAllowed));
-        } else if (state1DateEncountered && !state2DateEncountered) {
-            --daysAllowed;
-            let trip = activeTrips[activeTrips.length - 1];
-            trip.daysAhead = 0;
+            state1DateEncountered = true;
         }
 
-        if (state1DateEncountered && isUserDate(year, month, day)) {
+        if (state2Date[0] == year && state2Date[1] == month && state2Date[2] == day) {
+            state1DateEncountered = false;
+            streakNotInCountry = 0;
             state2DateEncountered = true;
         }
 
-        if (state1DateEncountered && state2DateEncountered) {
+        if (isUserDate(year, month, day)) {
             state1DateEncountered = false;
-            if (!isUserDate(year, month, day)) {
-                --daysAllowed;
-            }
+            hadFirstDay = true;
+            streakNotInCountry = 0;
 
-            if (!isUserDate(year, month, day)) {
-                inATrip = false;
+            daysLeftInfo[`${year}/${month}/${day}`] = availableDatesTracker - 1;
+            return availableDatesTracker--;
+        } else {
+            if (state1DateEncountered) {
+                daysLeftInfo[`${year}/${month}/${day}`] = availableDatesTracker - 1;
+                return availableDatesTracker--;
             }
-            let trip = activeTrips[activeTrips.length - 1];
-            trip.endingAmount = daysAllowed;
-            trip.tripLength = trip.startingAmount - trip.endingAmount;
-            trip.daysAhead = 0;
-
+            if (++streakNotInCountry > 90) {
+                availableDatesTracker = 90;
+                hadFirstDay = false;
+            }
         }
 
-        // Check if the date is selected by the user
-        if (isUserDate(year, month, day)) {
-            if (!inATrip) {
-                inATrip = true;
-                activeTrips.push(new TripDaysLeft(daysAllowed));
-            }
-            --daysAllowed;
+        daysLeftInfo[`${year}/${month}/${day}`] = availableDatesTracker;
+        return availableDatesTracker;
+    }
+
+    const olderThan180Days = (year, month, day) => {
+        let threshold = new Date();
+        threshold.setDate(threshold.getDate() - 180);
+        let inputDate = setDate(year, month, day);
+        return inputDate > threshold;
+    }
+
+    const calculate = (year, month, day) => {
+        if (state1Date[0] == year && state1Date[1] == month && state1Date[2] == day) {
+            state1DateEncountered = !state1DateEncountered;
+        }
+
+        if (isUserDate(year, month, day) || state1DateEncountered) {
+            streakNotInCountry = 0;
+            ++daysWithin180;
+            --daysTracker;
             if (!hadFirstDay)
                 hadFirstDay = true;
         } else {
-            if (inATrip) {
-                inATrip = false;
-                let trip = activeTrips[activeTrips.length - 1];
-                trip.endingAmount = daysAllowed;
-                trip.tripLength = trip.startingAmount - trip.endingAmount;
-            }
+            ++streakNotInCountry;
             if (hadFirstDay) {
                 hadFirstDay = false;
             }
         }
 
         if (state2Date[0] == year && state2Date[1] == month && state2Date[2] == day) {
-            state2DateEncountered = true;
+            state1DateEncountered = false;
         }
 
         let behind180days = setDate(year, month, day);
         behind180days.setDate(behind180days.getDate() - 91);
 
+        // if (isUserDate(behind180days.getFullYear(), behind180days.getMonth(), behind180days.getDate())) {
+        //     --daysWithin180;
+        // }
 
-        // daysAllowed = 90 - daysWithin180;
-        daysLeftInfo[`${year}/${month}/${day}`] = daysAllowed;
-        daysLeftDisplay = (hadFirstDay) ? daysAllowed + 1 : daysAllowed;
-        //return daysLeftDisplay;
+        if (streakNotInCountry > 90) {
+            --daysWithin180;
+        }
+
+        daysTracker = daysAllowed - daysWithin180;
+        daysLeftInfo[`${year}/${month}/${day}`] = daysTracker;
+        return (hadFirstDay) ? daysTracker + 1 : daysTracker;
     };
 
     // The display starts here
@@ -671,7 +651,7 @@ export default function Planner(props) {
                                                               className="date-button"
                                                               onClick={(e) => {
                                                                   e.stopPropagation(); // Prevent event bubbling to the parent
-                                                                  selectDate(year, month, day, daysAllowed);
+                                                                  selectDate(year, month, day, availableDatesTracker);
                                                               }}
                                                               style={{
                                                                   backgroundColor: (() => {
@@ -691,7 +671,6 @@ export default function Planner(props) {
                                                           >
                                                               {day}
                                                           </button>
-                                                          {calculate(year, month, day)}
                                                           <span
                                                               style={{
                                                                   position: "relative",
@@ -704,13 +683,13 @@ export default function Planner(props) {
                                                                   display: "flex",
                                                                   alignItems: "center",
                                                                   justifyContent: "center",
-                                                                  backgroundColor: daysLeftDisplay <= 0 ? "#d93f3f" : "#CCC",
+                                                                  backgroundColor: daysTracker <= 0 ? "#d93f3f" : "#CCC",
                                                                   textAlign: "center",
                                                                   borderRadius: "50%",
                                                               }}
                                                           >
                                                               {/* {calculate(year, month, day)} */}
-                                                              {Math.max(daysLeftDisplay, 0)}
+                                                              {Math.max(calculate(year, month, day), 0)}
                                                           </span>
                                                       </div>
                                                   ))}
