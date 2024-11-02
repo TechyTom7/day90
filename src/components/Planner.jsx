@@ -528,6 +528,7 @@ export default function Planner(props) {
                 if (trip.daysAhead == 90) {
                     daysAllowed += trip.tripLength;
                     activeTrips.splice(i, i);
+                    --i;
                 }
             }
         }
