@@ -649,9 +649,9 @@ export default function Planner(props) {
                         </button>
                     </div>
                 </div>
-                <span className="days-info">
+                {/* <span className="days-info">
                     If you are creating a new schedule, input the dates you have been to an EU country
-                </span>
+                </span> */}
                 <span className="days-info" style={{ fontSize: "20px" }}>
                     <b>Trip info</b>: {tripInfo ? null : "None selected"}
                 </span>
@@ -680,11 +680,11 @@ export default function Planner(props) {
                                                                       if (selectedDate) return "#7f95ba";
 
                                                                       const toRemoveDate = isToRemoveDate(year, month, day);
-                                                                      if (toRemoveDate) return "#6aba72";
+                                                                      if (toRemoveDate) return "#a2a9de";
 
                                                                       const userDate = isUserDate(year, month, day);
                                                                       const now = isNow(year, month, day);
-                                                                      if (userDate) return now ? "#bfbfbf" : "#ACACAC";
+                                                                      if (userDate) return now ? "#bfbfbf" : "#60c48c";
                                                                       return now ? "#d9a5a5" : "#888";
                                                                   })(),
                                                                   border: "0.5px solid black",

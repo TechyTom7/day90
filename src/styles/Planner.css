@@ -10,10 +10,18 @@ html, body {
     font-size: 1.8rem;
     display: block;
     margin-left: 20px;
+
 }
 
 #planner-container {
     padding-bottom: 50px;
+    position: absolute;
+}
+
+@media screen and (min-width: 680px) {
+    #planner-container {
+        top: -20px;
+    }
 }
 
 .days-info {
@@ -36,7 +44,7 @@ html, body {
 
     width: 95%;
     background-color: #989898;
-    height: 50vh;
+    height: 60vh;
     overflow: scroll;
 
     margin: 30px auto 50px;
